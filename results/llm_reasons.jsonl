@@ -1,0 +1,22 @@
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 0, "labels": {"ligand": "L1", "base": "B1", "additive": "A1"}, "reason": "Cache fixture for parser validation 1."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 1, "labels": {"ligand": "L1", "base": "B1", "additive": "A2"}, "reason": "Cache fixture for parser validation 2."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 30, "labels": {"ligand": "L2", "base": "B1", "additive": "A1"}, "reason": "Cache fixture for parser validation 3."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 74, "labels": {"ligand": "L3", "base": "B2", "additive": "A5"}, "reason": "Cache fixture for parser validation 4."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 119, "labels": {"ligand": "L4", "base": "B3", "additive": "A10"}, "reason": "Cache fixture for parser validation 5."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 0, "labels": {"ligand": "L1", "base": "B1", "additive": "A1"}, "reason": "Cache fixture for parser validation 1."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 1, "labels": {"ligand": "L1", "base": "B1", "additive": "A2"}, "reason": "Cache fixture for parser validation 2."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 30, "labels": {"ligand": "L2", "base": "B1", "additive": "A1"}, "reason": "Cache fixture for parser validation 3."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 74, "labels": {"ligand": "L3", "base": "B2", "additive": "A5"}, "reason": "Cache fixture for parser validation 4."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 119, "labels": {"ligand": "L4", "base": "B3", "additive": "A10"}, "reason": "Cache fixture for parser validation 5."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 1, "labels": {"ligand": "L1", "base": "B1", "additive": "A2"}, "reason": "Cache fixture for parser validation 2."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 30, "labels": {"ligand": "L2", "base": "B1", "additive": "A1"}, "reason": "Cache fixture for parser validation 3."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 74, "labels": {"ligand": "L3", "base": "B2", "additive": "A5"}, "reason": "Cache fixture for parser validation 4."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 119, "labels": {"ligand": "L4", "base": "B3", "additive": "A10"}, "reason": "Cache fixture for parser validation 5."}
+{"strategy": "hybrid", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 0, "labels": {"ligand": "L1", "base": "B1", "additive": "A1"}, "reason": "Cache fixture shortlist 1."}
+{"strategy": "hybrid", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 1, "labels": {"ligand": "L1", "base": "B1", "additive": "A2"}, "reason": "Cache fixture shortlist 2."}
+{"strategy": "hybrid", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 30, "labels": {"ligand": "L2", "base": "B1", "additive": "A1"}, "reason": "Cache fixture shortlist 3."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 0, "labels": {"ligand": "L1", "base": "B1", "additive": "A1"}, "reason": "Cache fixture for parser validation 1."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 1, "labels": {"ligand": "L1", "base": "B1", "additive": "A2"}, "reason": "Cache fixture for parser validation 2."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 30, "labels": {"ligand": "L2", "base": "B1", "additive": "A1"}, "reason": "Cache fixture for parser validation 3."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 74, "labels": {"ligand": "L3", "base": "B2", "additive": "A5"}, "reason": "Cache fixture for parser validation 4."}
+{"strategy": "llm", "task_id": "MOCK", "seed": 0, "round": 1, "row_idx": 119, "labels": {"ligand": "L4", "base": "B3", "additive": "A10"}, "reason": "Cache fixture for parser validation 5."}

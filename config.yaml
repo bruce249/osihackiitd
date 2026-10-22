@@ -1,0 +1,13 @@
+# Shared campaign settings. src/campaign.py reads this file.
+q: 5
+initial_design: 5
+budgets:
+  BH: 20
+  SM: 20
+  DA: 30
+  MOCK: 20
+seeds:
+  statistical: 10
+  llm: 3
+hit_rule: "A condition in the task's top 1% by yield, or its top 3, whichever is larger."
+model: gpt-6-luna

@@ -1,0 +1,2 @@
+Figure 3 was not written. Inputs absent: strategies llm, llm_anon, llm_zeroshot. No bar was invented.
+Figure 4 was not written. Input absent: results/llm_reasons.jsonl. No annotations were invented.

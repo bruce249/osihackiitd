@@ -1,0 +1,142 @@
+{
+  "base": [
+    {
+      "label": "B1",
+      "name": "cesium pivalate",
+      "smiles": "O=C([O-])C(C)(C)C.[Cs+]"
+    },
+    {
+      "label": "B2",
+      "name": "potassium pivalate",
+      "smiles": "O=C([O-])C(C)(C)C.[K+]"
+    },
+    {
+      "label": "B3",
+      "name": "cesium acetate",
+      "smiles": "O=C([O-])C.[Cs+]"
+    },
+    {
+      "label": "B4",
+      "name": "potassium acetate",
+      "smiles": "O=C([O-])C.[K+]"
+    }
+  ],
+  "ligand": [
+    {
+      "label": "L1",
+      "name": "PPhtBu2",
+      "smiles": "CC(C)(C)P(C1=CC=CC=C1)C(C)(C)C"
+    },
+    {
+      "label": "L2",
+      "name": "BrettPhos",
+      "smiles": "CC(C)C1=CC(C(C)C)=C(C(C(C)C)=C1)C2=C(P(C3CCCCC3)C4CCCCC4)C(OC)=CC=C2OC"
+    },
+    {
+      "label": "L3",
+      "name": "X-Phos",
+      "smiles": "CC(C1=C(C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4)C(C(C)C)=CC(C(C)C)=C1)C"
+    },
+    {
+      "label": "L4",
+      "name": "GorlosPhos HBF4",
+      "smiles": "CC(OC1=C(P(C2CCCCC2)C3CCCCC3)C(OC(C)C)=CC=C1)C"
+    },
+    {
+      "label": "L5",
+      "name": "tBPh-CPhos",
+      "smiles": "CN(C)C1=CC=CC(N(C)C)=C1C2=CC=CC=C2P(C(C)(C)C)C3=CC=CC=C3"
+    },
+    {
+      "label": "L6",
+      "name": "PPhMe2",
+      "smiles": "CP(C)C1=CC=CC=C1"
+    },
+    {
+      "label": "L7",
+      "name": "PPh2Me",
+      "smiles": "CP(C1=CC=CC=C1)C2=CC=CC=C2"
+    },
+    {
+      "label": "L8",
+      "name": "CgMe-PPh",
+      "smiles": "C[C@]1(O2)O[C@](C[C@]2(C)P3C4=CC=CC=C4)(C)O[C@]3(C)C1"
+    },
+    {
+      "label": "L9",
+      "name": "JackiePhos",
+      "smiles": "FC(F)(F)C1=CC(P(C2=C(C3=C(C(C)C)C=C(C(C)C)C=C3C(C)C)C(OC)=CC=C2OC)C4=CC(C(F)(F)F)=CC(C(F)(F)F)=C4)=CC(C(F)(F)F)=C1"
+    },
+    {
+      "label": "L10",
+      "name": "PPh3",
+      "smiles": "P(C1=CC=CC=C1)(C2=CC=CC=C2)C3=CC=CC=C3"
+    },
+    {
+      "label": "L11",
+      "name": "P(fur)3",
+      "smiles": "P(C1=CC=CO1)(C2=CC=CO2)C3=CC=CO3"
+    },
+    {
+      "label": "L12",
+      "name": "PCy3 HBF4",
+      "smiles": "P(C1CCCCC1)(C2CCCCC2)C3CCCCC3"
+    }
+  ],
+  "solvent": [
+    {
+      "label": "S1",
+      "name": "N,N-dimethylacetamide",
+      "smiles": "CC(N(C)C)=O"
+    },
+    {
+      "label": "S2",
+      "name": "p-xylene",
+      "smiles": "CC1=CC=C(C)C=C1"
+    },
+    {
+      "label": "S3",
+      "name": "butyronitrile",
+      "smiles": "CCCC#N"
+    },
+    {
+      "label": "S4",
+      "name": "n-butyl acetate",
+      "smiles": "CCCCOC(C)=O"
+    }
+  ],
+  "concentration": [
+    {
+      "label": "C1",
+      "name": "0.057 M",
+      "smiles": ""
+    },
+    {
+      "label": "C2",
+      "name": "0.1 M",
+      "smiles": ""
+    },
+    {
+      "label": "C3",
+      "name": "0.153 M",
+      "smiles": ""
+    }
+  ],
+  "temperature": [
+    {
+      "label": "T1",
+      "name": "90 \u00b0C",
+      "smiles": ""
+    },
+    {
+      "label": "T2",
+      "name": "105 \u00b0C",
+      "smiles": ""
+    },
+    {
+      "label": "T3",
+      "name": "120 \u00b0C",
+      "smiles": ""
+    }
+  ]
+}

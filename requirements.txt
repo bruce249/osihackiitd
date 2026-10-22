@@ -1,0 +1,12 @@
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+openpyxl
+tqdm
+pyyaml
+openai
+marimo
+tabpfn
+# rdkit is optional and not required.

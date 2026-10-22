@@ -1,0 +1,46 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": []
+  },
+  "response": {
+    "picks": [
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A1",
+        "reason": "Cache fixture for parser validation 1."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A2",
+        "reason": "Cache fixture for parser validation 2."
+      },
+      {
+        "ligand": "L2",
+        "base": "B1",
+        "additive": "A1",
+        "reason": "Cache fixture for parser validation 3."
+      },
+      {
+        "ligand": "L3",
+        "base": "B2",
+        "additive": "A5",
+        "reason": "Cache fixture for parser validation 4."
+      },
+      {
+        "ligand": "L4",
+        "base": "B3",
+        "additive": "A10",
+        "reason": "Cache fixture for parser validation 5."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 999,
+    "completion_tokens": 999,
+    "total_tokens": 1998,
+    "cached_tokens": 5
+  }
+}

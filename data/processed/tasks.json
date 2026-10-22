@@ -1,0 +1,88 @@
+[
+  {
+    "id": "BH_t1",
+    "dataset": "BH",
+    "substrate": "4-chloroanisole",
+    "variables": [
+      "ligand",
+      "base",
+      "additive"
+    ],
+    "row_count": 264,
+    "max_yield": 44.14137034,
+    "hit_threshold": 41.98383636,
+    "budget": 20
+  },
+  {
+    "id": "BH_t2",
+    "dataset": "BH",
+    "substrate": "1-bromo-4-(trifluoromethyl)benzene",
+    "variables": [
+      "ligand",
+      "base",
+      "additive"
+    ],
+    "row_count": 263,
+    "max_yield": 54.22375463,
+    "hit_threshold": 53.83922891,
+    "budget": 20
+  },
+  {
+    "id": "BH_t3",
+    "dataset": "BH",
+    "substrate": "3-chloropyridine",
+    "variables": [
+      "ligand",
+      "base",
+      "additive"
+    ],
+    "row_count": 264,
+    "max_yield": 68.76495224,
+    "hit_threshold": 66.85191048,
+    "budget": 20
+  },
+  {
+    "id": "BH_t4",
+    "dataset": "BH",
+    "substrate": "1-ethyl-4-iodobenzene",
+    "variables": [
+      "ligand",
+      "base",
+      "additive"
+    ],
+    "row_count": 264,
+    "max_yield": 85.89473594,
+    "hit_threshold": 83.93941968,
+    "budget": 20
+  },
+  {
+    "id": "BH_t5",
+    "dataset": "BH",
+    "substrate": "2-iodopyridine",
+    "variables": [
+      "ligand",
+      "base",
+      "additive"
+    ],
+    "row_count": 264,
+    "max_yield": 99.99999,
+    "hit_threshold": 99.61910732,
+    "budget": 20
+  },
+  {
+    "id": "DA",
+    "dataset": "DA",
+    "substrate": "5-(2-fluorophenyl)-1-methyl-1H-imidazole-4-carbonitrile",
+    "variables": [
+      "base",
+      "ligand",
+      "solvent",
+      "concentration",
+      "temperature"
+    ],
+    "row_count": 1728,
+    "max_yield": 100.0,
+    "hit_threshold": 90.39,
+    "budget": 30
+  }
+]

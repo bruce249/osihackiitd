@@ -1,0 +1,434 @@
+{
+  "bh": {
+    "source_url": "https://raw.githubusercontent.com/rxn4chemistry/rxn_yields/master/data/Buchwald-Hartwig/Dreher_and_Doyle_input_data.xlsx",
+    "sheet": "FullCV_01",
+    "rows_before_average": 3955,
+    "rows_after_average": 3955,
+    "duplicate_rows_collapsed": 0,
+    "yield_min": 0.0,
+    "yield_max": 99.99999,
+    "yield_multiplied_by_100": false,
+    "n_aryl": 15,
+    "n_ligand": 4,
+    "n_base": 3,
+    "n_additive": 22
+  },
+  "da": {
+    "source_url": "https://raw.githubusercontent.com/b-shields/edbo/master/experiments/data/direct_arylation/experiment_index.csv",
+    "rows_before_average": 1728,
+    "rows_after_average": 1728,
+    "duplicate_rows_collapsed": 0,
+    "yield_min": 0.0,
+    "yield_max": 100.0,
+    "yield_multiplied_by_100": false,
+    "hit_k": 18,
+    "hit_threshold": 90.39,
+    "n_features": 26
+  },
+  "aryl": [
+    {
+      "smiles": "ClC1=CC=C(CC)C=C1",
+      "name": "1-chloro-4-ethylbenzene",
+      "halide": "Cl",
+      "n": 262,
+      "max_yield": 16.2490011,
+      "mean_yield": 3.8698378605992367
+    },
+    {
+      "smiles": "ClC1=CC=C(OC)C=C1",
+      "name": "4-chloroanisole",
+      "halide": "Cl",
+      "n": 264,
+      "max_yield": 44.14137034,
+      "mean_yield": 1.9437708162727272
+    },
+    {
+      "smiles": "ClC1=CC=C(C(F)(F)F)C=C1",
+      "name": "1-chloro-4-(trifluoromethyl)benzene",
+      "halide": "Cl",
+      "n": 264,
+      "max_yield": 45.04873884,
+      "mean_yield": 12.511433508867427
+    },
+    {
+      "smiles": "BrC1=CC=C(C(F)(F)F)C=C1",
+      "name": "1-bromo-4-(trifluoromethyl)benzene",
+      "halide": "Br",
+      "n": 263,
+      "max_yield": 54.22375463,
+      "mean_yield": 26.902510732479087
+    },
+    {
+      "smiles": "IC1=CC=C(C(F)(F)F)C=C1",
+      "name": "1-iodo-4-(trifluoromethyl)benzene",
+      "halide": "I",
+      "n": 263,
+      "max_yield": 55.56585889,
+      "mean_yield": 33.71043348064258
+    },
+    {
+      "smiles": "BrC1=CC=C(OC)C=C1",
+      "name": "4-bromoanisole",
+      "halide": "Br",
+      "n": 264,
+      "max_yield": 67.81431274,
+      "mean_yield": 25.89439124401515
+    },
+    {
+      "smiles": "IC1=CC=C(OC)C=C1",
+      "name": "4-iodoanisole",
+      "halide": "I",
+      "n": 264,
+      "max_yield": 68.2481271,
+      "mean_yield": 32.54365922687879
+    },
+    {
+      "smiles": "ClC1=CN=CC=C1",
+      "name": "3-chloropyridine",
+      "halide": "Cl",
+      "n": 264,
+      "max_yield": 68.76495224,
+      "mean_yield": 13.846498131564394
+    },
+    {
+      "smiles": "IC1=CC=C(CC)C=C1",
+      "name": "1-ethyl-4-iodobenzene",
+      "halide": "I",
+      "n": 264,
+      "max_yield": 85.89473594,
+      "mean_yield": 52.581911359647734
+    },
+    {
+      "smiles": "BrC1=CC=C(CC)C=C1",
+      "name": "1-bromo-4-ethylbenzene",
+      "halide": "Br",
+      "n": 264,
+      "max_yield": 86.59757822,
+      "mean_yield": 43.506827681503786
+    },
+    {
+      "smiles": "ClC1=NC=CC=C1",
+      "name": "2-chloropyridine",
+      "halide": "Cl",
+      "n": 264,
+      "max_yield": 91.39064225,
+      "mean_yield": 43.479557285715906
+    },
+    {
+      "smiles": "BrC1=NC=CC=C1",
+      "name": "2-bromopyridine",
+      "halide": "Br",
+      "n": 264,
+      "max_yield": 97.29293259,
+      "mean_yield": 52.44908777469318
+    },
+    {
+      "smiles": "IC1=CN=CC=C1",
+      "name": "3-iodopyridine",
+      "halide": "I",
+      "n": 263,
+      "max_yield": 98.28722602,
+      "mean_yield": 51.255736425558936
+    },
+    {
+      "smiles": "BrC1=CN=CC=C1",
+      "name": "3-bromopyridine",
+      "halide": "Br",
+      "n": 264,
+      "max_yield": 98.73132029,
+      "mean_yield": 42.999800447579545
+    },
+    {
+      "smiles": "IC1=NC=CC=C1",
+      "name": "2-iodopyridine",
+      "halide": "I",
+      "n": 264,
+      "max_yield": 99.99999,
+      "mean_yield": 58.6098744183106
+    }
+  ],
+  "bh_tasks": [
+    {
+      "id": "BH_t1",
+      "name": "4-chloroanisole",
+      "halide": "Cl",
+      "n": 264,
+      "max_yield": 44.14137034,
+      "hit_threshold": 41.98383636,
+      "smiles": "ClC1=CC=C(OC)C=C1"
+    },
+    {
+      "id": "BH_t2",
+      "name": "1-bromo-4-(trifluoromethyl)benzene",
+      "halide": "Br",
+      "n": 263,
+      "max_yield": 54.22375463,
+      "hit_threshold": 53.83922891,
+      "smiles": "BrC1=CC=C(C(F)(F)F)C=C1"
+    },
+    {
+      "id": "BH_t3",
+      "name": "3-chloropyridine",
+      "halide": "Cl",
+      "n": 264,
+      "max_yield": 68.76495224,
+      "hit_threshold": 66.85191048,
+      "smiles": "ClC1=CN=CC=C1"
+    },
+    {
+      "id": "BH_t4",
+      "name": "1-ethyl-4-iodobenzene",
+      "halide": "I",
+      "n": 264,
+      "max_yield": 85.89473594,
+      "hit_threshold": 83.93941968,
+      "smiles": "IC1=CC=C(CC)C=C1"
+    },
+    {
+      "id": "BH_t5",
+      "name": "2-iodopyridine",
+      "halide": "I",
+      "n": 264,
+      "max_yield": 99.99999,
+      "hit_threshold": 99.61910732,
+      "smiles": "IC1=NC=CC=C1"
+    }
+  ],
+  "dropped_max_under_30": [
+    {
+      "smiles": "ClC1=CC=C(CC)C=C1",
+      "name": "1-chloro-4-ethylbenzene",
+      "halide": "Cl",
+      "n": 262,
+      "max_yield": 16.2490011,
+      "mean_yield": 3.8698378605992367
+    }
+  ],
+  "pickled": [
+    "BH_t1",
+    "BH_t2",
+    "BH_t3",
+    "BH_t4",
+    "BH_t5",
+    "DA"
+  ],
+  "bh_feature_width": 29,
+  "da_conc": [
+    "0.057 M",
+    "0.1 M",
+    "0.153 M"
+  ],
+  "da_temp": [
+    "90 \u00b0C",
+    "105 \u00b0C",
+    "120 \u00b0C"
+  ],
+  "bh_ligands": [
+    [
+      "L1",
+      "tBuBrettPhos"
+    ],
+    [
+      "L2",
+      "tBuXPhos"
+    ],
+    [
+      "L3",
+      "XPhos"
+    ],
+    [
+      "L4",
+      "AdBrettPhos"
+    ]
+  ],
+  "bh_bases": [
+    [
+      "B1",
+      "BTMG"
+    ],
+    [
+      "B2",
+      "P2Et"
+    ],
+    [
+      "B3",
+      "MTBD"
+    ]
+  ],
+  "bh_additives": [
+    [
+      "A1",
+      "5-phenylisoxazole"
+    ],
+    [
+      "A2",
+      "4-phenylisoxazole"
+    ],
+    [
+      "A3",
+      "3-phenylisoxazole"
+    ],
+    [
+      "A4",
+      "5-(dibenzylamino)isoxazole"
+    ],
+    [
+      "A5",
+      "3-(dibenzylamino)isoxazole"
+    ],
+    [
+      "A6",
+      "1,2-benzisoxazole"
+    ],
+    [
+      "A7",
+      "2,1-benzisoxazole"
+    ],
+    [
+      "A8",
+      "ethyl 5-methylisoxazole-4-carboxylate"
+    ],
+    [
+      "A9",
+      "ethyl 5-methylisoxazole-3-carboxylate"
+    ],
+    [
+      "A10",
+      "3,5-dimethylisoxazole"
+    ],
+    [
+      "A11",
+      "5-methyl-3-(pyrrol-1-yl)isoxazole"
+    ],
+    [
+      "A12",
+      "5-methylisoxazole"
+    ],
+    [
+      "A13",
+      "ethyl 3-methylisoxazole-5-carboxylate"
+    ],
+    [
+      "A14",
+      "3-methyl-5-phenylisoxazole"
+    ],
+    [
+      "A15",
+      "3-methylisoxazole"
+    ],
+    [
+      "A16",
+      "ethyl isoxazole-4-carboxylate"
+    ],
+    [
+      "A17",
+      "ethyl isoxazole-3-carboxylate"
+    ],
+    [
+      "A18",
+      "ethyl 3-methoxyisoxazole-5-carboxylate"
+    ],
+    [
+      "A19",
+      "5-(2,6-difluorophenyl)isoxazole"
+    ],
+    [
+      "A20",
+      "methyl isoxazole-5-carboxylate"
+    ],
+    [
+      "A21",
+      "methyl 5-(furan-2-yl)isoxazole-3-carboxylate"
+    ],
+    [
+      "A22",
+      "methyl 5-(thiophen-2-yl)isoxazole-3-carboxylate"
+    ]
+  ],
+  "da_ligands": [
+    [
+      "L1",
+      "PPhtBu2"
+    ],
+    [
+      "L2",
+      "BrettPhos"
+    ],
+    [
+      "L3",
+      "X-Phos"
+    ],
+    [
+      "L4",
+      "GorlosPhos HBF4"
+    ],
+    [
+      "L5",
+      "tBPh-CPhos"
+    ],
+    [
+      "L6",
+      "PPhMe2"
+    ],
+    [
+      "L7",
+      "PPh2Me"
+    ],
+    [
+      "L8",
+      "CgMe-PPh"
+    ],
+    [
+      "L9",
+      "JackiePhos"
+    ],
+    [
+      "L10",
+      "PPh3"
+    ],
+    [
+      "L11",
+      "P(fur)3"
+    ],
+    [
+      "L12",
+      "PCy3 HBF4"
+    ]
+  ],
+  "da_bases": [
+    [
+      "B1",
+      "cesium pivalate"
+    ],
+    [
+      "B2",
+      "potassium pivalate"
+    ],
+    [
+      "B3",
+      "cesium acetate"
+    ],
+    [
+      "B4",
+      "potassium acetate"
+    ]
+  ],
+  "da_solvents": [
+    [
+      "S1",
+      "N,N-dimethylacetamide"
+    ],
+    [
+      "S2",
+      "p-xylene"
+    ],
+    [
+      "S3",
+      "butyronitrile"
+    ],
+    [
+      "S4",
+      "n-butyl acetate"
+    ]
+  ]
+}

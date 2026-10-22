@@ -1,0 +1,9 @@
+.venv
+venv
+data/raw/
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.marimo/

@@ -1,0 +1,153 @@
+{
+  "ligand": [
+    {
+      "label": "L1",
+      "name": "tBuBrettPhos",
+      "smiles": "CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C(OC)=CC=C2OC"
+    },
+    {
+      "label": "L2",
+      "name": "tBuXPhos",
+      "smiles": "CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C=CC=C2"
+    },
+    {
+      "label": "L3",
+      "name": "XPhos",
+      "smiles": "CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C3CCCCC3)C4CCCCC4)C=CC=C2"
+    },
+    {
+      "label": "L4",
+      "name": "AdBrettPhos",
+      "smiles": "CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P([C@@]3(C[C@@H]4C5)C[C@H](C4)C[C@H]5C3)[C@]6(C7)C[C@@H](C[C@@H]7C8)C[C@@H]8C6)C(OC)=CC=C2OC"
+    }
+  ],
+  "base": [
+    {
+      "label": "B1",
+      "name": "BTMG",
+      "smiles": "CC(C)(C)/N=C(N(C)C)/N(C)C"
+    },
+    {
+      "label": "B2",
+      "name": "P2Et",
+      "smiles": "CN(C)P(N(C)C)(N(C)C)=NP(N(C)C)(N(C)C)=NCC"
+    },
+    {
+      "label": "B3",
+      "name": "MTBD",
+      "smiles": "CN1CCCN2C1=NCCC2"
+    }
+  ],
+  "additive": [
+    {
+      "label": "A1",
+      "name": "5-phenylisoxazole",
+      "smiles": "C1(C2=CC=CC=C2)=CC=NO1"
+    },
+    {
+      "label": "A2",
+      "name": "4-phenylisoxazole",
+      "smiles": "C1(C2=CC=CC=C2)=CON=C1"
+    },
+    {
+      "label": "A3",
+      "name": "3-phenylisoxazole",
+      "smiles": "C1(C2=CC=CC=C2)=NOC=C1"
+    },
+    {
+      "label": "A4",
+      "name": "5-(dibenzylamino)isoxazole",
+      "smiles": "C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=CC=NO1"
+    },
+    {
+      "label": "A5",
+      "name": "3-(dibenzylamino)isoxazole",
+      "smiles": "C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=NOC=C1"
+    },
+    {
+      "label": "A6",
+      "name": "1,2-benzisoxazole",
+      "smiles": "C12=C(C=CC=C2)ON=C1"
+    },
+    {
+      "label": "A7",
+      "name": "2,1-benzisoxazole",
+      "smiles": "C12=CON=C1C=CC=C2"
+    },
+    {
+      "label": "A8",
+      "name": "ethyl 5-methylisoxazole-4-carboxylate",
+      "smiles": "CC1=C(C(OCC)=O)C=NO1"
+    },
+    {
+      "label": "A9",
+      "name": "ethyl 5-methylisoxazole-3-carboxylate",
+      "smiles": "CC1=CC(C(OCC)=O)=NO1"
+    },
+    {
+      "label": "A10",
+      "name": "3,5-dimethylisoxazole",
+      "smiles": "CC1=CC(C)=NO1"
+    },
+    {
+      "label": "A11",
+      "name": "5-methyl-3-(pyrrol-1-yl)isoxazole",
+      "smiles": "CC1=CC(N2C=CC=C2)=NO1"
+    },
+    {
+      "label": "A12",
+      "name": "5-methylisoxazole",
+      "smiles": "CC1=CC=NO1"
+    },
+    {
+      "label": "A13",
+      "name": "ethyl 3-methylisoxazole-5-carboxylate",
+      "smiles": "CC1=NOC(C(OCC)=O)=C1"
+    },
+    {
+      "label": "A14",
+      "name": "3-methyl-5-phenylisoxazole",
+      "smiles": "CC1=NOC(C2=CC=CC=C2)=C1"
+    },
+    {
+      "label": "A15",
+      "name": "3-methylisoxazole",
+      "smiles": "CC1=NOC=C1"
+    },
+    {
+      "label": "A16",
+      "name": "ethyl isoxazole-4-carboxylate",
+      "smiles": "CCOC(C1=CON=C1)=O"
+    },
+    {
+      "label": "A17",
+      "name": "ethyl isoxazole-3-carboxylate",
+      "smiles": "CCOC(C1=NOC=C1)=O"
+    },
+    {
+      "label": "A18",
+      "name": "ethyl 3-methoxyisoxazole-5-carboxylate",
+      "smiles": "COC1=NOC(C(OCC)=O)=C1"
+    },
+    {
+      "label": "A19",
+      "name": "5-(2,6-difluorophenyl)isoxazole",
+      "smiles": "FC(C=CC=C1F)=C1C2=CC=NO2"
+    },
+    {
+      "label": "A20",
+      "name": "methyl isoxazole-5-carboxylate",
+      "smiles": "O=C(OC)C1=CC=NO1"
+    },
+    {
+      "label": "A21",
+      "name": "methyl 5-(furan-2-yl)isoxazole-3-carboxylate",
+      "smiles": "O=C(OC)C1=NOC(C2=CC=CO2)=C1"
+    },
+    {
+      "label": "A22",
+      "name": "methyl 5-(thiophen-2-yl)isoxazole-3-carboxylate",
+      "smiles": "O=C(OC)C1=NOC(C2=CC=CS2)=C1"
+    }
+  ]
+}
