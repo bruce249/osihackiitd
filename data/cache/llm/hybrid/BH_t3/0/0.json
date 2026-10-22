@@ -1,0 +1,148 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an expert synthetic chemist planning experiments to maximise reaction yield.\nEach experiment chooses one option for every variable listed. You will see the results\nof experiments already run. Choose the next batch to find the highest-yield conditions\nin as few experiments as possible. Use chemical knowledge (ligand and base effects,\nsubstrate reactivity, solvent effects) and the observed results. Balance exploiting\ngood regions with testing informative new combinations. Never repeat an experiment.\nReturn JSON only."
+      },
+      {
+        "role": "user",
+        "content": "Pd-catalysed Buchwald-Hartwig amination of 3-chloropyridine with 4-methylaniline; choose the ligand, base and isoxazole additive.\n\nVariables and options:\nligand:\nL1: tBuBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C(OC)=CC=C2OC]\nL2: tBuXPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C=CC=C2]\nL3: XPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C3CCCCC3)C4CCCCC4)C=CC=C2]\nL4: AdBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P([C@@]3(C[C@@H]4C5)C[C@H](C4)C[C@H]5C3)[C@]6(C7)C[C@@H](C[C@@H]7C8)C[C@@H]8C6)C(OC)=CC=C2OC]\n\nbase:\nB1: BTMG [SMILES CC(C)(C)/N=C(N(C)C)/N(C)C]\nB2: P2Et [SMILES CN(C)P(N(C)C)(N(C)C)=NP(N(C)C)(N(C)C)=NCC]\nB3: MTBD [SMILES CN1CCCN2C1=NCCC2]\n\nadditive:\nA1: 5-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CC=NO1]\nA2: 4-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CON=C1]\nA3: 3-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=NOC=C1]\nA4: 5-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=CC=NO1]\nA5: 3-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=NOC=C1]\nA6: 1,2-benzisoxazole [SMILES C12=C(C=CC=C2)ON=C1]\nA7: 2,1-benzisoxazole [SMILES C12=CON=C1C=CC=C2]\nA8: ethyl 5-methylisoxazole-4-carboxylate [SMILES CC1=C(C(OCC)=O)C=NO1]\nA9: ethyl 5-methylisoxazole-3-carboxylate [SMILES CC1=CC(C(OCC)=O)=NO1]\nA10: 3,5-dimethylisoxazole [SMILES CC1=CC(C)=NO1]\nA11: 5-methyl-3-(pyrrol-1-yl)isoxazole [SMILES CC1=CC(N2C=CC=C2)=NO1]\nA12: 5-methylisoxazole [SMILES CC1=CC=NO1]\nA13: ethyl 3-methylisoxazole-5-carboxylate [SMILES CC1=NOC(C(OCC)=O)=C1]\nA14: 3-methyl-5-phenylisoxazole [SMILES CC1=NOC(C2=CC=CC=C2)=C1]\nA15: 3-methylisoxazole [SMILES CC1=NOC=C1]\nA16: ethyl isoxazole-4-carboxylate [SMILES CCOC(C1=CON=C1)=O]\nA17: ethyl isoxazole-3-carboxylate [SMILES CCOC(C1=NOC=C1)=O]\nA18: ethyl 3-methoxyisoxazole-5-carboxylate [SMILES COC1=NOC(C(OCC)=O)=C1]\nA19: 5-(2,6-difluorophenyl)isoxazole [SMILES FC(C=CC=C1F)=C1C2=CC=NO2]\nA20: methyl isoxazole-5-carboxylate [SMILES O=C(OC)C1=CC=NO1]\nA21: methyl 5-(furan-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CO2)=C1]\nA22: methyl 5-(thiophen-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CS2)=C1]\n\nExperiments so far (best first):\n\nPropose exactly 20 NEW experiments not listed above. Return JSON:\n{\"picks\": [{\"ligand\": \"<label>\", \"base\": \"<label>\", \"additive\": \"<label>\", \"reason\": \"<one sentence>\"}]}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "response": {
+    "picks": [
+      {
+        "ligand": "L1",
+        "base": "B2",
+        "additive": "A12",
+        "reason": "The bulky, electron-rich BrettPhos ligand and strong phosphazene base are a promising starting point for coupling an unactivated heteroaryl chloride, while 5-methylisoxazole tests a compact additive."
+      },
+      {
+        "ligand": "L1",
+        "base": "B2",
+        "additive": "A10",
+        "reason": "This keeps the likely favorable ligand/base pair and tests whether a second methyl substituent on the isoxazole changes the additive effect."
+      },
+      {
+        "ligand": "L1",
+        "base": "B2",
+        "additive": "A15",
+        "reason": "This tests the positional isomer of A12 with the same ligand and base to isolate the influence of isoxazole substitution pattern."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A1",
+        "reason": "MTBD tests a less strongly basic alternative with BrettPhos, and 5-phenylisoxazole probes a more hydrophobic additive."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A4",
+        "reason": "BTMG provides a distinct guanidine base comparison, while the dibenzylamino substituent tests a more strongly donating isoxazole additive."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A8",
+        "reason": "This checks whether MTBD can support the coupling with a carbonyl-substituted isoxazole additive that may alter catalyst or substrate coordination."
+      },
+      {
+        "ligand": "L1",
+        "base": "B2",
+        "additive": "A21",
+        "reason": "The strong-base BrettPhos combination is paired with a furan-containing ester isoxazole to test a larger, heteroatom-rich additive."
+      },
+      {
+        "ligand": "L2",
+        "base": "B2",
+        "additive": "A3",
+        "reason": "tBuXPhos offers a closely related but less electron-rich ligand comparison, and 3-phenylisoxazole tests additive regioisomer effects."
+      },
+      {
+        "ligand": "L2",
+        "base": "B2",
+        "additive": "A14",
+        "reason": "This compares tBuXPhos under strong-base conditions with a methyl- and phenyl-substituted isoxazole additive."
+      },
+      {
+        "ligand": "L2",
+        "base": "B3",
+        "additive": "A5",
+        "reason": "The combination tests the tBuXPhos/MTBD pairing and whether a dibenzylamino group on the alternate isoxazole regioisomer is beneficial."
+      },
+      {
+        "ligand": "L2",
+        "base": "B1",
+        "additive": "A6",
+        "reason": "BTMG broadens the base comparison, while benzisoxazole tests a fused-ring additive with distinct steric and electronic properties."
+      },
+      {
+        "ligand": "L2",
+        "base": "B2",
+        "additive": "A17",
+        "reason": "This tests a carboxylated isoxazole additive with tBuXPhos and the strong base most likely to promote turnover."
+      },
+      {
+        "ligand": "L2",
+        "base": "B3",
+        "additive": "A19",
+        "reason": "The difluorophenyl isoxazole probes an electron-poor aryl additive under the alternative MTBD base."
+      },
+      {
+        "ligand": "L3",
+        "base": "B2",
+        "additive": "A2",
+        "reason": "XPhos provides a less bulky ligand comparison under strong-base conditions, with 4-phenylisoxazole testing another phenylisoxazole arrangement."
+      },
+      {
+        "ligand": "L3",
+        "base": "B2",
+        "additive": "A9",
+        "reason": "This evaluates XPhos with a methyl-substituted isoxazole ester additive and a strongly basic phosphazene."
+      },
+      {
+        "ligand": "L3",
+        "base": "B3",
+        "additive": "A11",
+        "reason": "The XPhos/MTBD pairing tests a distinct catalyst-base combination with a pyrrolyl-substituted isoxazole additive."
+      },
+      {
+        "ligand": "L3",
+        "base": "B1",
+        "additive": "A7",
+        "reason": "This tests BTMG with XPhos and the fused benzisoxazole regioisomer to broaden both base and additive coverage."
+      },
+      {
+        "ligand": "L3",
+        "base": "B2",
+        "additive": "A22",
+        "reason": "A thiophene-containing ester isoxazole explores a sulfur-rich additive with XPhos under the strong-base condition."
+      },
+      {
+        "ligand": "L4",
+        "base": "B2",
+        "additive": "A13",
+        "reason": "AdBrettPhos tests a highly hindered BrettPhos-family ligand, while the ester-bearing isoxazole provides a distinct additive probe under strong-base conditions."
+      },
+      {
+        "ligand": "L4",
+        "base": "B3",
+        "additive": "A20",
+        "reason": "This compares AdBrettPhos with MTBD and a simple isoxazole ester to assess whether the specialized ligand benefits from a milder base."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 1292,
+    "completion_tokens": 1623,
+    "total_tokens": 2915,
+    "cached_tokens": 0
+  }
+}
