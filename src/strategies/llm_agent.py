@@ -3,13 +3,17 @@
 The campaign calls ``make_strategy()`` with no arguments and records
 ``strategy.name``. When this process was started with
 ``--strategy llm_anon`` (or ``llm_zeroshot``) and ``--module`` pointing at
-this file, that name is used. Explicit ``mode`` and ``one_shot`` arguments
-win, which is how tests and ``recommend()`` select a variant.
+this file, that name is used. The same name is copied into STRATEGY_NAME
+so a process-pool worker, whose argv does not repeat the CLI, selects the
+same arm. An already-set STRATEGY_NAME is the fallback when argv has no
+``--strategy``. Explicit ``mode`` and ``one_shot`` arguments win, which is
+how tests and ``recommend()`` select a variant.
 """
 
 from __future__ import annotations
 
 import logging
+import os
 import sys
 import threading
 
@@ -160,7 +164,23 @@ def _resolve_mode(mode, one_shot, kwargs) -> tuple[str, bool]:
 
 
 def _cli_strategy_name():
-    """Read --strategy when the runner loaded this module from the CLI."""
+    """Read --strategy, else STRATEGY_NAME, when this module is the arm.
+
+    A resolved CLI name is published to STRATEGY_NAME. Campaign preview
+    calls ``make_strategy()`` before the pool starts, and spawned workers
+    inherit the variable even though their argv does not contain --strategy.
+    """
+    strategy = _strategy_from_argv()
+    if strategy and strategy.lower() in _ALIASES:
+        os.environ["STRATEGY_NAME"] = strategy
+        return strategy
+    env_name = os.environ.get("STRATEGY_NAME", "").strip()
+    if env_name:
+        return env_name
+    return None
+
+
+def _strategy_from_argv():
     argv = sys.argv
     module = _argv_value(argv, "--module")
     strategy = _argv_value(argv, "--strategy")

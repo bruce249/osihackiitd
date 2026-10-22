@@ -1,7 +1,9 @@
 """Cached OpenAI JSON chat calls and token accounting.
 
-The API key is read only from the environment variable OPENAI_API_KEY.
-It is never written to disk, included in the cache, or logged.
+OPENAI_API_KEY is taken from the process environment. On import, unset
+variables are filled from the project .env and, if that key is still unset,
+from the parent directory .env. Existing values are left unchanged. The key
+is never written to disk, included in the cache, logged, or printed.
 """
 
 from __future__ import annotations
@@ -17,6 +19,47 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 USAGE_PATH = ROOT / "results" / "llm_usage.json"
 DEFAULT_MODEL = "gpt-6-luna"
+
+
+def _load_env_file(path: Path) -> None:
+    """Apply KEY=VALUE lines. Blank and comment lines are skipped.
+
+    Surrounding quotes are removed. A variable is written only when the
+    process does not already have a non-empty value. Nothing is printed.
+    """
+    try:
+        text = path.read_text(encoding="utf-8-sig")
+    except OSError:
+        return
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("export "):
+            line = line[len("export ") :].strip()
+        if "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if not key:
+            continue
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
+            value = value[1:-1]
+        if not value:
+            continue
+        if os.environ.get(key, "").strip():
+            continue
+        os.environ[key] = value
+
+
+def _load_local_env() -> None:
+    _load_env_file(ROOT / ".env")
+    if not os.environ.get("OPENAI_API_KEY", "").strip():
+        _load_env_file(ROOT.parent / ".env")
+
+
+_load_local_env()
 
 # Counts HTTP attempts. Cache hits do not increment this.
 live_calls = 0

@@ -1,0 +1,58 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an expert synthetic chemist planning experiments to maximise reaction yield.\nEach experiment chooses one option for every variable listed. You will see the results\nof experiments already run. Choose the next batch to find the highest-yield conditions\nin as few experiments as possible. Use chemical knowledge (ligand and base effects,\nsubstrate reactivity, solvent effects) and the observed results. Balance exploiting\ngood regions with testing informative new combinations. Never repeat an experiment.\nReturn JSON only."
+      },
+      {
+        "role": "user",
+        "content": "Pd-catalysed Buchwald-Hartwig amination of 4-chloroanisole with 4-methylaniline; choose the ligand, base and isoxazole additive.\n\nVariables and options:\nligand:\nL1: Ligand option 1\nL2: Ligand option 2\nL3: Ligand option 3\nL4: Ligand option 4\n\nbase:\nB1: Base option 1\nB2: Base option 2\nB3: Base option 3\n\nadditive:\nA1: Additive option 1\nA2: Additive option 2\nA3: Additive option 3\nA4: Additive option 4\nA5: Additive option 5\nA6: Additive option 6\nA7: Additive option 7\nA8: Additive option 8\nA9: Additive option 9\nA10: Additive option 10\nA11: Additive option 11\nA12: Additive option 12\nA13: Additive option 13\nA14: Additive option 14\nA15: Additive option 15\nA16: Additive option 16\nA17: Additive option 17\nA18: Additive option 18\nA19: Additive option 19\nA20: Additive option 20\nA21: Additive option 21\nA22: Additive option 22\n\nExperiments so far (best first):\nL3 | B1 | A3 -> 1.3%\nL3 | B1 | A9 -> 0.9%\nL1 | B2 | A2 -> 0.9%\nL2 | B1 | A9 -> 0.7%\nL3 | B1 | A1 -> 0.5%\nL1 | B1 | A9 -> 0.3%\nL1 | B2 | A9 -> 0.3%\nL3 | B2 | A21 -> 0.0%\nL3 | B3 | A7 -> 0.0%\nL3 | B1 | A2 -> 0.0%\n\nPropose exactly 5 NEW experiments not listed above. Return JSON:\n{\"picks\": [{\"ligand\": \"<label>\", \"base\": \"<label>\", \"additive\": \"<label>\", \"reason\": \"<one sentence>\"}]}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "response": {
+    "picks": [
+      {
+        "ligand": "L3",
+        "base": "B1",
+        "additive": "A4",
+        "reason": "This tests a new additive with the best-performing ligand–base pair observed so far."
+      },
+      {
+        "ligand": "L3",
+        "base": "B1",
+        "additive": "A5",
+        "reason": "A second additive screen under the strongest observed ligand–base conditions may reveal a better additive."
+      },
+      {
+        "ligand": "L3",
+        "base": "B2",
+        "additive": "A3",
+        "reason": "This checks whether the top additive can improve the leading ligand with the alternative base."
+      },
+      {
+        "ligand": "L1",
+        "base": "B2",
+        "additive": "A3",
+        "reason": "This tests the top additive with a ligand–base pair that already gave a comparatively strong result."
+      },
+      {
+        "ligand": "L4",
+        "base": "B1",
+        "additive": "A3",
+        "reason": "This explores the untested ligand while retaining the best observed base and additive."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 611,
+    "completion_tokens": 956,
+    "total_tokens": 1567,
+    "cached_tokens": 0
+  }
+}

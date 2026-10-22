@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import logging
+import os
+import sys
 
 import numpy as np
 
@@ -37,7 +39,51 @@ except Exception:
 
 
 def make_strategy(**kwargs):
+    """Return the hybrid arm.
+
+    Explicit ``strategy`` or ``name`` kwargs win. Otherwise ``--strategy``
+    is read when ``--module`` points at this file, then STRATEGY_NAME.
+    This module only builds the hybrid arm, so the recorded name stays
+    ``hybrid`` for that selection and for a bare ``make_strategy()`` call.
+    """
+    requested = kwargs.get("strategy")
+    if requested is None:
+        requested = kwargs.get("name")
+    if requested is None:
+        requested = _cli_strategy_name()
+    if requested is not None and str(requested).lower() not in ("hybrid", ""):
+        requested = "hybrid"
+    if requested and not os.environ.get("STRATEGY_NAME", "").strip():
+        os.environ["STRATEGY_NAME"] = "hybrid"
     return Strategy()
+
+
+def _cli_strategy_name():
+    argv = sys.argv
+    module = _argv_value(argv, "--module")
+    strategy = _argv_value(argv, "--strategy")
+    if module and strategy:
+        norm = module.replace("\\", ".").replace("/", ".")
+        if norm.endswith("hybrid") or norm.endswith("hybrid.py"):
+            if str(strategy).lower() == "hybrid":
+                os.environ["STRATEGY_NAME"] = "hybrid"
+            return strategy
+    env_name = os.environ.get("STRATEGY_NAME", "").strip()
+    if env_name:
+        return env_name
+    return None
+
+
+def _argv_value(argv, flag: str):
+    if flag in argv:
+        index = argv.index(flag)
+        if index + 1 < len(argv):
+            return argv[index + 1]
+    prefix = flag + "="
+    for arg in argv:
+        if arg.startswith(prefix):
+            return arg[len(prefix) :]
+    return None
 
 
 class Strategy:

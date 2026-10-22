@@ -1,0 +1,188 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an expert synthetic chemist planning experiments to maximise reaction yield.\nEach experiment chooses one option for every variable listed. You will see the results\nof experiments already run. Choose the next batch to find the highest-yield conditions\nin as few experiments as possible. Use chemical knowledge (ligand and base effects,\nsubstrate reactivity, solvent effects) and the observed results. Balance exploiting\ngood regions with testing informative new combinations. Never repeat an experiment.\nReturn JSON only."
+      },
+      {
+        "role": "user",
+        "content": "Pd-catalysed direct C-H arylation of an imidazole to form 5-(2-fluorophenyl)-1-methyl-1H-imidazole-4-carbonitrile (Shields et al., Nature 2021, reaction 3); choose the base, ligand, solvent, concentration and temperature.\n\nVariables and options:\nbase:\nB1: cesium pivalate [SMILES O=C([O-])C(C)(C)C.[Cs+]]\nB2: potassium pivalate [SMILES O=C([O-])C(C)(C)C.[K+]]\nB3: cesium acetate [SMILES O=C([O-])C.[Cs+]]\nB4: potassium acetate [SMILES O=C([O-])C.[K+]]\n\nligand:\nL1: PPhtBu2 [SMILES CC(C)(C)P(C1=CC=CC=C1)C(C)(C)C]\nL2: BrettPhos [SMILES CC(C)C1=CC(C(C)C)=C(C(C(C)C)=C1)C2=C(P(C3CCCCC3)C4CCCCC4)C(OC)=CC=C2OC]\nL3: X-Phos [SMILES CC(C1=C(C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4)C(C(C)C)=CC(C(C)C)=C1)C]\nL4: GorlosPhos HBF4 [SMILES CC(OC1=C(P(C2CCCCC2)C3CCCCC3)C(OC(C)C)=CC=C1)C]\nL5: tBPh-CPhos [SMILES CN(C)C1=CC=CC(N(C)C)=C1C2=CC=CC=C2P(C(C)(C)C)C3=CC=CC=C3]\nL6: PPhMe2 [SMILES CP(C)C1=CC=CC=C1]\nL7: PPh2Me [SMILES CP(C1=CC=CC=C1)C2=CC=CC=C2]\nL8: CgMe-PPh [SMILES C[C@]1(O2)O[C@](C[C@]2(C)P3C4=CC=CC=C4)(C)O[C@]3(C)C1]\nL9: JackiePhos [SMILES FC(F)(F)C1=CC(P(C2=C(C3=C(C(C)C)C=C(C(C)C)C=C3C(C)C)C(OC)=CC=C2OC)C4=CC(C(F)(F)F)=CC(C(F)(F)F)=C4)=CC(C(F)(F)F)=C1]\nL10: PPh3 [SMILES P(C1=CC=CC=C1)(C2=CC=CC=C2)C3=CC=CC=C3]\nL11: P(fur)3 [SMILES P(C1=CC=CO1)(C2=CC=CO2)C3=CC=CO3]\nL12: PCy3 HBF4 [SMILES P(C1CCCCC1)(C2CCCCC2)C3CCCCC3]\n\nsolvent:\nS1: N,N-dimethylacetamide [SMILES CC(N(C)C)=O]\nS2: p-xylene [SMILES CC1=CC=C(C)C=C1]\nS3: butyronitrile [SMILES CCCC#N]\nS4: n-butyl acetate [SMILES CCCCOC(C)=O]\n\nconcentration:\nC1: 0.057 M\nC2: 0.1 M\nC3: 0.153 M\n\ntemperature:\nT1: 90 °C\nT2: 105 °C\nT3: 120 °C\n\nExperiments so far (best first):\nB2 | L4 | S4 | C1 | T3 -> 38.6%\nB1 | L9 | S3 | C3 | T1 -> 16.9%\nB2 | L9 | S3 | C1 | T3 -> 16.1%\nB2 | L9 | S2 | C1 | T1 -> 7.2%\nB3 | L7 | S3 | C2 | T1 -> 0.0%\n\nPropose exactly 20 NEW experiments not listed above. Return JSON:\n{\"picks\": [{\"base\": \"<label>\", \"ligand\": \"<label>\", \"solvent\": \"<label>\", \"concentration\": \"<label>\", \"temperature\": \"<label>\", \"reason\": \"<one sentence>\"}]}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "response": {
+    "picks": [
+      {
+        "base": "B1",
+        "ligand": "L4",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Tests whether cesium pivalate improves on the best potassium-pivalate condition while holding all other variables fixed."
+      },
+      {
+        "base": "B3",
+        "ligand": "L4",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Isolates the effect of replacing pivalate with acetate while retaining cesium as the counterion."
+      },
+      {
+        "base": "B4",
+        "ligand": "L4",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Tests potassium acetate against the successful potassium-pivalate condition to assess the importance of the carboxylate."
+      },
+      {
+        "base": "B2",
+        "ligand": "L4",
+        "solvent": "S4",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "Tests a moderate concentration increase around the current best condition."
+      },
+      {
+        "base": "B2",
+        "ligand": "L4",
+        "solvent": "S4",
+        "concentration": "C3",
+        "temperature": "T3",
+        "reason": "Tests whether the highest available concentration improves conversion relative to the dilute best condition."
+      },
+      {
+        "base": "B2",
+        "ligand": "L4",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T2",
+        "reason": "Measures the effect of lowering temperature by 15 °C while preserving the best base, ligand, solvent, and concentration."
+      },
+      {
+        "base": "B2",
+        "ligand": "L4",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T1",
+        "reason": "Checks whether a substantially milder temperature can retain yield or reduce thermal side reactions."
+      },
+      {
+        "base": "B2",
+        "ligand": "L2",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Compares BrettPhos with the leading ligand under the established best reaction conditions."
+      },
+      {
+        "base": "B2",
+        "ligand": "L3",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Tests the bulky biaryl phosphine X-Phos as an alternative for promoting C–H arylation."
+      },
+      {
+        "base": "B2",
+        "ligand": "L1",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Evaluates a compact, strongly donating dialkylphosphine ligand in the favorable reaction environment."
+      },
+      {
+        "base": "B2",
+        "ligand": "L5",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Tests the distinctive aminobiphenyl phosphine scaffold while keeping the optimized conditions otherwise unchanged."
+      },
+      {
+        "base": "B2",
+        "ligand": "L12",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Checks whether a strongly donating cyclohexyl phosphine can match the lead ligand under the best conditions."
+      },
+      {
+        "base": "B2",
+        "ligand": "L6",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Explores a smaller alkylaryl phosphine to determine whether less steric bulk benefits this substrate."
+      },
+      {
+        "base": "B2",
+        "ligand": "L10",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Provides a triphenylphosphine benchmark against the more electron-rich and sterically demanding ligand options."
+      },
+      {
+        "base": "B2",
+        "ligand": "L4",
+        "solvent": "S1",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Tests polar, coordinating DMA as an alternative solvent with the leading catalyst and base."
+      },
+      {
+        "base": "B2",
+        "ligand": "L4",
+        "solvent": "S2",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Tests a nonpolar aromatic solvent to assess whether a less coordinating medium improves the reaction."
+      },
+      {
+        "base": "B2",
+        "ligand": "L4",
+        "solvent": "S3",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Tests butyronitrile against the successful ester solvent while holding the leading catalyst conditions fixed."
+      },
+      {
+        "base": "B2",
+        "ligand": "L4",
+        "solvent": "S1",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "Tests whether moderate concentration compensates for or enhances the effect of the coordinating DMA solvent."
+      },
+      {
+        "base": "B1",
+        "ligand": "L4",
+        "solvent": "S4",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "Checks whether the cesium-versus-potassium pivalate effect changes at moderate concentration."
+      },
+      {
+        "base": "B2",
+        "ligand": "L8",
+        "solvent": "S4",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Explores a structurally distinct chiral phosphine ligand under the best-performing base, solvent, concentration, and temperature."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 1110,
+    "completion_tokens": 2031,
+    "total_tokens": 3141,
+    "cached_tokens": 0
+  }
+}

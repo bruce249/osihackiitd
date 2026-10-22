@@ -1,0 +1,58 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an expert synthetic chemist planning experiments to maximise reaction yield.\nEach experiment chooses one option for every variable listed. You will see the results\nof experiments already run. Choose the next batch to find the highest-yield conditions\nin as few experiments as possible. Use chemical knowledge (ligand and base effects,\nsubstrate reactivity, solvent effects) and the observed results. Balance exploiting\ngood regions with testing informative new combinations. Never repeat an experiment.\nReturn JSON only."
+      },
+      {
+        "role": "user",
+        "content": "Pd-catalysed Buchwald-Hartwig amination of 1-ethyl-4-iodobenzene with 4-methylaniline; choose the ligand, base and isoxazole additive.\n\nVariables and options:\nligand:\nL1: tBuBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C(OC)=CC=C2OC]\nL2: tBuXPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C=CC=C2]\nL3: XPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C3CCCCC3)C4CCCCC4)C=CC=C2]\nL4: AdBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P([C@@]3(C[C@@H]4C5)C[C@H](C4)C[C@H]5C3)[C@]6(C7)C[C@@H](C[C@@H]7C8)C[C@@H]8C6)C(OC)=CC=C2OC]\n\nbase:\nB1: BTMG [SMILES CC(C)(C)/N=C(N(C)C)/N(C)C]\nB2: P2Et [SMILES CN(C)P(N(C)C)(N(C)C)=NP(N(C)C)(N(C)C)=NCC]\nB3: MTBD [SMILES CN1CCCN2C1=NCCC2]\n\nadditive:\nA1: 5-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CC=NO1]\nA2: 4-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CON=C1]\nA3: 3-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=NOC=C1]\nA4: 5-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=CC=NO1]\nA5: 3-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=NOC=C1]\nA6: 1,2-benzisoxazole [SMILES C12=C(C=CC=C2)ON=C1]\nA7: 2,1-benzisoxazole [SMILES C12=CON=C1C=CC=C2]\nA8: ethyl 5-methylisoxazole-4-carboxylate [SMILES CC1=C(C(OCC)=O)C=NO1]\nA9: ethyl 5-methylisoxazole-3-carboxylate [SMILES CC1=CC(C(OCC)=O)=NO1]\nA10: 3,5-dimethylisoxazole [SMILES CC1=CC(C)=NO1]\nA11: 5-methyl-3-(pyrrol-1-yl)isoxazole [SMILES CC1=CC(N2C=CC=C2)=NO1]\nA12: 5-methylisoxazole [SMILES CC1=CC=NO1]\nA13: ethyl 3-methylisoxazole-5-carboxylate [SMILES CC1=NOC(C(OCC)=O)=C1]\nA14: 3-methyl-5-phenylisoxazole [SMILES CC1=NOC(C2=CC=CC=C2)=C1]\nA15: 3-methylisoxazole [SMILES CC1=NOC=C1]\nA16: ethyl isoxazole-4-carboxylate [SMILES CCOC(C1=CON=C1)=O]\nA17: ethyl isoxazole-3-carboxylate [SMILES CCOC(C1=NOC=C1)=O]\nA18: ethyl 3-methoxyisoxazole-5-carboxylate [SMILES COC1=NOC(C(OCC)=O)=C1]\nA19: 5-(2,6-difluorophenyl)isoxazole [SMILES FC(C=CC=C1F)=C1C2=CC=NO2]\nA20: methyl isoxazole-5-carboxylate [SMILES O=C(OC)C1=CC=NO1]\nA21: methyl 5-(furan-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CO2)=C1]\nA22: methyl 5-(thiophen-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CS2)=C1]\n\nExperiments so far (best first):\nL4 | B3 | A13 -> 85.9%\nL2 | B3 | A13 -> 84.9%\nL2 | B3 | A11 -> 72.6%\nL4 | B2 | A13 -> 72.5%\nL2 | B3 | A14 -> 68.7%\nL4 | B2 | A11 -> 68.2%\nL4 | B2 | A14 -> 67.8%\nL2 | B2 | A11 -> 63.5%\nL3 | B1 | A17 -> 42.2%\nL2 | B2 | A12 -> 19.4%\n\nPropose exactly 5 NEW experiments not listed above. Return JSON:\n{\"picks\": [{\"ligand\": \"<label>\", \"base\": \"<label>\", \"additive\": \"<label>\", \"reason\": \"<one sentence>\"}]}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "response": {
+    "picks": [
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A13",
+        "reason": "Keeps the strongest observed base–additive pair while testing whether the BrettPhos scaffold improves on the two leading ligands."
+      },
+      {
+        "ligand": "L3",
+        "base": "B3",
+        "additive": "A13",
+        "reason": "Tests the least-explored ligand under the best observed base and additive to assess whether those conditions rescue its performance."
+      },
+      {
+        "ligand": "L4",
+        "base": "B1",
+        "additive": "A13",
+        "reason": "Isolates the base effect with the leading ligand and additive, while checking whether BTMG can match MTBD."
+      },
+      {
+        "ligand": "L4",
+        "base": "B3",
+        "additive": "A18",
+        "reason": "Tests a close ester-substituted isoxazole analogue of the top additive under the best observed ligand and base."
+      },
+      {
+        "ligand": "L4",
+        "base": "B3",
+        "additive": "A9",
+        "reason": "Tests a positional isomer of the methyl/ester isoxazole motif that performed strongly in A13."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 1436,
+    "completion_tokens": 1293,
+    "total_tokens": 2729,
+    "cached_tokens": 0
+  }
+}

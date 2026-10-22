@@ -1,0 +1,58 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an expert synthetic chemist planning experiments to maximise reaction yield.\nEach experiment chooses one option for every variable listed. You will see the results\nof experiments already run. Choose the next batch to find the highest-yield conditions\nin as few experiments as possible. Use chemical knowledge (ligand and base effects,\nsubstrate reactivity, solvent effects) and the observed results. Balance exploiting\ngood regions with testing informative new combinations. Never repeat an experiment.\nReturn JSON only."
+      },
+      {
+        "role": "user",
+        "content": "Pd-catalysed Buchwald-Hartwig amination of 4-chloroanisole with 4-methylaniline; choose the ligand, base and isoxazole additive.\n\nVariables and options:\nligand:\nL1: tBuBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C(OC)=CC=C2OC]\nL2: tBuXPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C=CC=C2]\nL3: XPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C3CCCCC3)C4CCCCC4)C=CC=C2]\nL4: AdBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P([C@@]3(C[C@@H]4C5)C[C@H](C4)C[C@H]5C3)[C@]6(C7)C[C@@H](C[C@@H]7C8)C[C@@H]8C6)C(OC)=CC=C2OC]\n\nbase:\nB1: BTMG [SMILES CC(C)(C)/N=C(N(C)C)/N(C)C]\nB2: P2Et [SMILES CN(C)P(N(C)C)(N(C)C)=NP(N(C)C)(N(C)C)=NCC]\nB3: MTBD [SMILES CN1CCCN2C1=NCCC2]\n\nadditive:\nA1: 5-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CC=NO1]\nA2: 4-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CON=C1]\nA3: 3-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=NOC=C1]\nA4: 5-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=CC=NO1]\nA5: 3-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=NOC=C1]\nA6: 1,2-benzisoxazole [SMILES C12=C(C=CC=C2)ON=C1]\nA7: 2,1-benzisoxazole [SMILES C12=CON=C1C=CC=C2]\nA8: ethyl 5-methylisoxazole-4-carboxylate [SMILES CC1=C(C(OCC)=O)C=NO1]\nA9: ethyl 5-methylisoxazole-3-carboxylate [SMILES CC1=CC(C(OCC)=O)=NO1]\nA10: 3,5-dimethylisoxazole [SMILES CC1=CC(C)=NO1]\nA11: 5-methyl-3-(pyrrol-1-yl)isoxazole [SMILES CC1=CC(N2C=CC=C2)=NO1]\nA12: 5-methylisoxazole [SMILES CC1=CC=NO1]\nA13: ethyl 3-methylisoxazole-5-carboxylate [SMILES CC1=NOC(C(OCC)=O)=C1]\nA14: 3-methyl-5-phenylisoxazole [SMILES CC1=NOC(C2=CC=CC=C2)=C1]\nA15: 3-methylisoxazole [SMILES CC1=NOC=C1]\nA16: ethyl isoxazole-4-carboxylate [SMILES CCOC(C1=CON=C1)=O]\nA17: ethyl isoxazole-3-carboxylate [SMILES CCOC(C1=NOC=C1)=O]\nA18: ethyl 3-methoxyisoxazole-5-carboxylate [SMILES COC1=NOC(C(OCC)=O)=C1]\nA19: 5-(2,6-difluorophenyl)isoxazole [SMILES FC(C=CC=C1F)=C1C2=CC=NO2]\nA20: methyl isoxazole-5-carboxylate [SMILES O=C(OC)C1=CC=NO1]\nA21: methyl 5-(furan-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CO2)=C1]\nA22: methyl 5-(thiophen-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CS2)=C1]\n\nExperiments so far (best first):\nL4 | B3 | A5 -> 44.1%\nL4 | B1 | A5 -> 41.3%\nL1 | B1 | A5 -> 40.0%\nL4 | B2 | A5 -> 7.0%\nL3 | B2 | A8 -> 3.0%\nL2 | B3 | A16 -> 2.7%\nL4 | B1 | A11 -> 0.9%\nL1 | B2 | A18 -> 0.5%\nL1 | B1 | A17 -> 0.4%\nL4 | B1 | A4 -> 0.0%\n\nPropose exactly 5 NEW experiments not listed above. Return JSON:\n{\"picks\": [{\"ligand\": \"<label>\", \"base\": \"<label>\", \"additive\": \"<label>\", \"reason\": \"<one sentence>\"}]}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "response": {
+    "picks": [
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A5",
+        "reason": "A5 is the clear leading additive, and pairing it with B3 tests whether the strong L1 result with B1 improves under the best observed base."
+      },
+      {
+        "ligand": "L2",
+        "base": "B3",
+        "additive": "A5",
+        "reason": "This tests tBuXPhos with the leading additive and best observed base, avoiding the poor result previously confounded by a different additive."
+      },
+      {
+        "ligand": "L3",
+        "base": "B3",
+        "additive": "A5",
+        "reason": "This evaluates XPhos in the most promising additive/base setting despite its earlier poor result with B2 and A8."
+      },
+      {
+        "ligand": "L2",
+        "base": "B1",
+        "additive": "A5",
+        "reason": "This compares tBuXPhos against the successful L1 and L4 ligands using a base already shown to support high yield."
+      },
+      {
+        "ligand": "L3",
+        "base": "B1",
+        "additive": "A5",
+        "reason": "This tests whether XPhos performs better with the proven B1/A5 combination than in its earlier low-yield, differently configured experiment."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 1432,
+    "completion_tokens": 1036,
+    "total_tokens": 2468,
+    "cached_tokens": 0
+  }
+}

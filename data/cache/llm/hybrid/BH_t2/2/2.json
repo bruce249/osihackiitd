@@ -1,0 +1,148 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an expert synthetic chemist planning experiments to maximise reaction yield.\nEach experiment chooses one option for every variable listed. You will see the results\nof experiments already run. Choose the next batch to find the highest-yield conditions\nin as few experiments as possible. Use chemical knowledge (ligand and base effects,\nsubstrate reactivity, solvent effects) and the observed results. Balance exploiting\ngood regions with testing informative new combinations. Never repeat an experiment.\nReturn JSON only."
+      },
+      {
+        "role": "user",
+        "content": "Pd-catalysed Buchwald-Hartwig amination of 1-bromo-4-(trifluoromethyl)benzene with 4-methylaniline; choose the ligand, base and isoxazole additive.\n\nVariables and options:\nligand:\nL1: tBuBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C(OC)=CC=C2OC]\nL2: tBuXPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C=CC=C2]\nL3: XPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C3CCCCC3)C4CCCCC4)C=CC=C2]\nL4: AdBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P([C@@]3(C[C@@H]4C5)C[C@H](C4)C[C@H]5C3)[C@]6(C7)C[C@@H](C[C@@H]7C8)C[C@@H]8C6)C(OC)=CC=C2OC]\n\nbase:\nB1: BTMG [SMILES CC(C)(C)/N=C(N(C)C)/N(C)C]\nB2: P2Et [SMILES CN(C)P(N(C)C)(N(C)C)=NP(N(C)C)(N(C)C)=NCC]\nB3: MTBD [SMILES CN1CCCN2C1=NCCC2]\n\nadditive:\nA1: 5-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CC=NO1]\nA2: 4-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CON=C1]\nA3: 3-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=NOC=C1]\nA4: 5-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=CC=NO1]\nA5: 3-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=NOC=C1]\nA6: 1,2-benzisoxazole [SMILES C12=C(C=CC=C2)ON=C1]\nA7: 2,1-benzisoxazole [SMILES C12=CON=C1C=CC=C2]\nA8: ethyl 5-methylisoxazole-4-carboxylate [SMILES CC1=C(C(OCC)=O)C=NO1]\nA9: ethyl 5-methylisoxazole-3-carboxylate [SMILES CC1=CC(C(OCC)=O)=NO1]\nA10: 3,5-dimethylisoxazole [SMILES CC1=CC(C)=NO1]\nA11: 5-methyl-3-(pyrrol-1-yl)isoxazole [SMILES CC1=CC(N2C=CC=C2)=NO1]\nA12: 5-methylisoxazole [SMILES CC1=CC=NO1]\nA13: ethyl 3-methylisoxazole-5-carboxylate [SMILES CC1=NOC(C(OCC)=O)=C1]\nA14: 3-methyl-5-phenylisoxazole [SMILES CC1=NOC(C2=CC=CC=C2)=C1]\nA15: 3-methylisoxazole [SMILES CC1=NOC=C1]\nA16: ethyl isoxazole-4-carboxylate [SMILES CCOC(C1=CON=C1)=O]\nA17: ethyl isoxazole-3-carboxylate [SMILES CCOC(C1=NOC=C1)=O]\nA18: ethyl 3-methoxyisoxazole-5-carboxylate [SMILES COC1=NOC(C(OCC)=O)=C1]\nA19: 5-(2,6-difluorophenyl)isoxazole [SMILES FC(C=CC=C1F)=C1C2=CC=NO2]\nA20: methyl isoxazole-5-carboxylate [SMILES O=C(OC)C1=CC=NO1]\nA21: methyl 5-(furan-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CO2)=C1]\nA22: methyl 5-(thiophen-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CS2)=C1]\n\nExperiments so far (best first):\nL4 | B1 | A9 -> 41.7%\nL1 | B3 | A11 -> 38.2%\nL1 | B1 | A14 -> 37.1%\nL4 | B1 | A11 -> 35.3%\nL4 | B1 | A14 -> 33.6%\nL4 | B1 | A13 -> 32.4%\nL3 | B3 | A5 -> 24.0%\nL3 | B2 | A12 -> 12.4%\nL4 | B1 | A20 -> 4.5%\nL4 | B1 | A8 -> 3.8%\n\nPropose exactly 20 NEW experiments not listed above. Return JSON:\n{\"picks\": [{\"ligand\": \"<label>\", \"base\": \"<label>\", \"additive\": \"<label>\", \"reason\": \"<one sentence>\"}]}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "response": {
+    "picks": [
+      {
+        "ligand": "L4",
+        "base": "B1",
+        "additive": "A17",
+        "reason": "This tests whether the strong A9 result extends to the related isoxazole-3-carboxylate with the best observed ligand–base pair."
+      },
+      {
+        "ligand": "L4",
+        "base": "B1",
+        "additive": "A18",
+        "reason": "The high yield with A9 motivates testing a methoxy-substituted carboxylate analogue under the strongest observed conditions."
+      },
+      {
+        "ligand": "L4",
+        "base": "B1",
+        "additive": "A16",
+        "reason": "This probes whether the beneficial carboxylate is specific to A9’s substitution pattern or generalizes to the 4-carboxylate isomer."
+      },
+      {
+        "ligand": "L4",
+        "base": "B1",
+        "additive": "A21",
+        "reason": "This tests a heteroaryl-substituted carboxylate analogue while retaining the promising L4/B1 combination."
+      },
+      {
+        "ligand": "L4",
+        "base": "B1",
+        "additive": "A22",
+        "reason": "The related thiophene-containing carboxylate provides a useful comparison to the strong A9 additive."
+      },
+      {
+        "ligand": "L4",
+        "base": "B1",
+        "additive": "A10",
+        "reason": "This tests whether a simple dimethylisoxazole can retain activity without the carboxylate or aryl substituents of the stronger additives."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A9",
+        "reason": "A9 gave the highest observed yield with L4/B1, so this checks whether that additive benefit transfers to another BrettPhos ligand."
+      },
+      {
+        "ligand": "L2",
+        "base": "B1",
+        "additive": "A9",
+        "reason": "This tests the leading additive with tBuXPhos while keeping the empirically favorable BTMG base."
+      },
+      {
+        "ligand": "L3",
+        "base": "B1",
+        "additive": "A9",
+        "reason": "This evaluates whether A9 can improve the XPhos system, which has so far only been tested with weaker-performing conditions."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A9",
+        "reason": "The L1/B3 pair already performed well with A11, making A9 a promising additive swap to test."
+      },
+      {
+        "ligand": "L4",
+        "base": "B3",
+        "additive": "A9",
+        "reason": "This tests whether the top-performing additive can retain its benefit with the alternative MTBD base."
+      },
+      {
+        "ligand": "L2",
+        "base": "B1",
+        "additive": "A11",
+        "reason": "A11 performed well with both L1 and L4, so testing it with L2 explores whether its benefit extends across ligand families."
+      },
+      {
+        "ligand": "L4",
+        "base": "B3",
+        "additive": "A11",
+        "reason": "This combines an additive with multiple strong results and the alternate base to assess their compatibility."
+      },
+      {
+        "ligand": "L2",
+        "base": "B3",
+        "additive": "A11",
+        "reason": "This checks whether the favorable A11 response seen with L1/B3 transfers to tBuXPhos."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A11",
+        "reason": "A11 was productive with L1/B3, and this experiment isolates whether BTMG can improve that ligand–additive pairing."
+      },
+      {
+        "ligand": "L2",
+        "base": "B1",
+        "additive": "A14",
+        "reason": "A14 gave moderate-to-strong yields with L1 and L4, so this tests its performance with tBuXPhos under BTMG."
+      },
+      {
+        "ligand": "L4",
+        "base": "B3",
+        "additive": "A14",
+        "reason": "This tests whether the A14 response with L4 can be improved or maintained by replacing BTMG with MTBD."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A13",
+        "reason": "A13 produced a respectable result with L4/B1, motivating a ligand comparison under the same base and additive."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A13",
+        "reason": "This tests whether the A13 additive response depends on the base when paired with a BrettPhos ligand."
+      },
+      {
+        "ligand": "L4",
+        "base": "B1",
+        "additive": "A1",
+        "reason": "This evaluates a simple phenylisoxazole additive under the best observed ligand–base pair as a lower-complexity additive comparison."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 1441,
+    "completion_tokens": 2440,
+    "total_tokens": 3881,
+    "cached_tokens": 0
+  }
+}

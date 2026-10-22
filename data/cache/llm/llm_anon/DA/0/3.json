@@ -1,0 +1,68 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an expert synthetic chemist planning experiments to maximise reaction yield.\nEach experiment chooses one option for every variable listed. You will see the results\nof experiments already run. Choose the next batch to find the highest-yield conditions\nin as few experiments as possible. Use chemical knowledge (ligand and base effects,\nsubstrate reactivity, solvent effects) and the observed results. Balance exploiting\ngood regions with testing informative new combinations. Never repeat an experiment.\nReturn JSON only."
+      },
+      {
+        "role": "user",
+        "content": "Pd-catalysed direct C-H arylation of an imidazole to form 5-(2-fluorophenyl)-1-methyl-1H-imidazole-4-carbonitrile (Shields et al., Nature 2021, reaction 3); choose the base, ligand, solvent, concentration and temperature.\n\nVariables and options:\nbase:\nB1: Base option 1\nB2: Base option 2\nB3: Base option 3\nB4: Base option 4\n\nligand:\nL1: Ligand option 1\nL2: Ligand option 2\nL3: Ligand option 3\nL4: Ligand option 4\nL5: Ligand option 5\nL6: Ligand option 6\nL7: Ligand option 7\nL8: Ligand option 8\nL9: Ligand option 9\nL10: Ligand option 10\nL11: Ligand option 11\nL12: Ligand option 12\n\nsolvent:\nS1: Solvent option 1\nS2: Solvent option 2\nS3: Solvent option 3\nS4: Solvent option 4\n\nconcentration:\nC1: Concentration option 1\nC2: Concentration option 2\nC3: Concentration option 3\n\ntemperature:\nT1: Temperature option 1\nT2: Temperature option 2\nT3: Temperature option 3\n\nExperiments so far (best first):\nB3 | L3 | S3 | C2 | T3 -> 84.2%\nB3 | L3 | S3 | C2 | T2 -> 83.8%\nB1 | L3 | S3 | C3 | T3 -> 78.4%\nB3 | L3 | S3 | C3 | T3 -> 77.0%\nB3 | L3 | S3 | C1 | T3 -> 72.2%\nB1 | L3 | S3 | C2 | T2 -> 68.5%\nB3 | L3 | S2 | C2 | T3 -> 67.2%\nB1 | L3 | S3 | C2 | T3 -> 59.8%\nB4 | L3 | S3 | C2 | T3 -> 56.6%\nB3 | L4 | S3 | C1 | T3 -> 49.1%\nB1 | L4 | S3 | C2 | T3 -> 48.1%\nB1 | L3 | S3 | C1 | T3 -> 31.5%\nB2 | L5 | S3 | C1 | T3 -> 6.2%\nB1 | L1 | S4 | C1 | T3 -> 0.0%\nB2 | L7 | S2 | C1 | T1 -> 0.0%\n\nPropose exactly 5 NEW experiments not listed above. Return JSON:\n{\"picks\": [{\"base\": \"<label>\", \"ligand\": \"<label>\", \"solvent\": \"<label>\", \"concentration\": \"<label>\", \"temperature\": \"<label>\", \"reason\": \"<one sentence>\"}]}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "response": {
+    "picks": [
+      {
+        "base": "B3",
+        "ligand": "L3",
+        "solvent": "S3",
+        "concentration": "C2",
+        "temperature": "T1",
+        "reason": "This tests the remaining temperature option while retaining the strongly supported base, ligand, solvent, and concentration."
+      },
+      {
+        "base": "B3",
+        "ligand": "L3",
+        "solvent": "S1",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "This tests an untried solvent at the best-performing conditions to check whether it can improve on S3."
+      },
+      {
+        "base": "B3",
+        "ligand": "L3",
+        "solvent": "S4",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "This isolates the effect of the other untested solvent under the leading conditions."
+      },
+      {
+        "base": "B3",
+        "ligand": "L2",
+        "solvent": "S3",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "This screens an untested ligand while holding the established best conditions constant."
+      },
+      {
+        "base": "B3",
+        "ligand": "L6",
+        "solvent": "S3",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "This provides a second direct ligand comparison against the strong L3 benchmark."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 788,
+    "completion_tokens": 736,
+    "total_tokens": 1524,
+    "cached_tokens": 0
+  }
+}

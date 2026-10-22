@@ -1,0 +1,68 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an expert synthetic chemist planning experiments to maximise reaction yield.\nEach experiment chooses one option for every variable listed. You will see the results\nof experiments already run. Choose the next batch to find the highest-yield conditions\nin as few experiments as possible. Use chemical knowledge (ligand and base effects,\nsubstrate reactivity, solvent effects) and the observed results. Balance exploiting\ngood regions with testing informative new combinations. Never repeat an experiment.\nReturn JSON only."
+      },
+      {
+        "role": "user",
+        "content": "Pd-catalysed direct C-H arylation of an imidazole to form 5-(2-fluorophenyl)-1-methyl-1H-imidazole-4-carbonitrile (Shields et al., Nature 2021, reaction 3); choose the base, ligand, solvent, concentration and temperature.\n\nVariables and options:\nbase:\nB1: cesium pivalate [SMILES O=C([O-])C(C)(C)C.[Cs+]]\nB2: potassium pivalate [SMILES O=C([O-])C(C)(C)C.[K+]]\nB3: cesium acetate [SMILES O=C([O-])C.[Cs+]]\nB4: potassium acetate [SMILES O=C([O-])C.[K+]]\n\nligand:\nL1: PPhtBu2 [SMILES CC(C)(C)P(C1=CC=CC=C1)C(C)(C)C]\nL2: BrettPhos [SMILES CC(C)C1=CC(C(C)C)=C(C(C(C)C)=C1)C2=C(P(C3CCCCC3)C4CCCCC4)C(OC)=CC=C2OC]\nL3: X-Phos [SMILES CC(C1=C(C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4)C(C(C)C)=CC(C(C)C)=C1)C]\nL4: GorlosPhos HBF4 [SMILES CC(OC1=C(P(C2CCCCC2)C3CCCCC3)C(OC(C)C)=CC=C1)C]\nL5: tBPh-CPhos [SMILES CN(C)C1=CC=CC(N(C)C)=C1C2=CC=CC=C2P(C(C)(C)C)C3=CC=CC=C3]\nL6: PPhMe2 [SMILES CP(C)C1=CC=CC=C1]\nL7: PPh2Me [SMILES CP(C1=CC=CC=C1)C2=CC=CC=C2]\nL8: CgMe-PPh [SMILES C[C@]1(O2)O[C@](C[C@]2(C)P3C4=CC=CC=C4)(C)O[C@]3(C)C1]\nL9: JackiePhos [SMILES FC(F)(F)C1=CC(P(C2=C(C3=C(C(C)C)C=C(C(C)C)C=C3C(C)C)C(OC)=CC=C2OC)C4=CC(C(F)(F)F)=CC(C(F)(F)F)=C4)=CC(C(F)(F)F)=C1]\nL10: PPh3 [SMILES P(C1=CC=CC=C1)(C2=CC=CC=C2)C3=CC=CC=C3]\nL11: P(fur)3 [SMILES P(C1=CC=CO1)(C2=CC=CO2)C3=CC=CO3]\nL12: PCy3 HBF4 [SMILES P(C1CCCCC1)(C2CCCCC2)C3CCCCC3]\n\nsolvent:\nS1: N,N-dimethylacetamide [SMILES CC(N(C)C)=O]\nS2: p-xylene [SMILES CC1=CC=C(C)C=C1]\nS3: butyronitrile [SMILES CCCC#N]\nS4: n-butyl acetate [SMILES CCCCOC(C)=O]\n\nconcentration:\nC1: 0.057 M\nC2: 0.1 M\nC3: 0.153 M\n\ntemperature:\nT1: 90 °C\nT2: 105 °C\nT3: 120 °C\n\nExperiments so far (best first):\nB1 | L3 | S3 | C2 | T3 -> 59.8%\nB3 | L4 | S3 | C1 | T3 -> 49.1%\nB2 | L5 | S3 | C1 | T3 -> 6.2%\nB1 | L1 | S4 | C1 | T3 -> 0.0%\nB2 | L7 | S2 | C1 | T1 -> 0.0%\n\nPropose exactly 5 NEW experiments not listed above. Return JSON:\n{\"picks\": [{\"base\": \"<label>\", \"ligand\": \"<label>\", \"solvent\": \"<label>\", \"concentration\": \"<label>\", \"temperature\": \"<label>\", \"reason\": \"<one sentence>\"}]}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "response": {
+    "picks": [
+      {
+        "base": "B1",
+        "ligand": "L3",
+        "solvent": "S3",
+        "concentration": "C3",
+        "temperature": "T3",
+        "reason": "This tests whether increasing concentration improves the strongest observed cesium pivalate/X-Phos/butyronitrile condition."
+      },
+      {
+        "base": "B1",
+        "ligand": "L3",
+        "solvent": "S3",
+        "concentration": "C2",
+        "temperature": "T2",
+        "reason": "This isolates a modest temperature reduction from the best result to check whether 120 °C causes unproductive decomposition."
+      },
+      {
+        "base": "B1",
+        "ligand": "L1",
+        "solvent": "S3",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "The failed L1 result used a different solvent, so testing this bulky phosphine in the successful butyronitrile conditions separates ligand from solvent effects."
+      },
+      {
+        "base": "B1",
+        "ligand": "L2",
+        "solvent": "S3",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "BrettPhos offers a bulky, electron-rich ligand comparison while retaining the best-supported base, solvent, concentration, and temperature."
+      },
+      {
+        "base": "B2",
+        "ligand": "L3",
+        "solvent": "S3",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "This tests whether potassium pivalate can retain the strong X-Phos/butyronitrile performance despite the superior result so far with cesium pivalate."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 1110,
+    "completion_tokens": 910,
+    "total_tokens": 2020,
+    "cached_tokens": 0
+  }
+}

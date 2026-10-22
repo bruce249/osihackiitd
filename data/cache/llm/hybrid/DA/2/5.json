@@ -1,0 +1,188 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an expert synthetic chemist planning experiments to maximise reaction yield.\nEach experiment chooses one option for every variable listed. You will see the results\nof experiments already run. Choose the next batch to find the highest-yield conditions\nin as few experiments as possible. Use chemical knowledge (ligand and base effects,\nsubstrate reactivity, solvent effects) and the observed results. Balance exploiting\ngood regions with testing informative new combinations. Never repeat an experiment.\nReturn JSON only."
+      },
+      {
+        "role": "user",
+        "content": "Pd-catalysed direct C-H arylation of an imidazole to form 5-(2-fluorophenyl)-1-methyl-1H-imidazole-4-carbonitrile (Shields et al., Nature 2021, reaction 3); choose the base, ligand, solvent, concentration and temperature.\n\nVariables and options:\nbase:\nB1: cesium pivalate [SMILES O=C([O-])C(C)(C)C.[Cs+]]\nB2: potassium pivalate [SMILES O=C([O-])C(C)(C)C.[K+]]\nB3: cesium acetate [SMILES O=C([O-])C.[Cs+]]\nB4: potassium acetate [SMILES O=C([O-])C.[K+]]\n\nligand:\nL1: PPhtBu2 [SMILES CC(C)(C)P(C1=CC=CC=C1)C(C)(C)C]\nL2: BrettPhos [SMILES CC(C)C1=CC(C(C)C)=C(C(C(C)C)=C1)C2=C(P(C3CCCCC3)C4CCCCC4)C(OC)=CC=C2OC]\nL3: X-Phos [SMILES CC(C1=C(C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4)C(C(C)C)=CC(C(C)C)=C1)C]\nL4: GorlosPhos HBF4 [SMILES CC(OC1=C(P(C2CCCCC2)C3CCCCC3)C(OC(C)C)=CC=C1)C]\nL5: tBPh-CPhos [SMILES CN(C)C1=CC=CC(N(C)C)=C1C2=CC=CC=C2P(C(C)(C)C)C3=CC=CC=C3]\nL6: PPhMe2 [SMILES CP(C)C1=CC=CC=C1]\nL7: PPh2Me [SMILES CP(C1=CC=CC=C1)C2=CC=CC=C2]\nL8: CgMe-PPh [SMILES C[C@]1(O2)O[C@](C[C@]2(C)P3C4=CC=CC=C4)(C)O[C@]3(C)C1]\nL9: JackiePhos [SMILES FC(F)(F)C1=CC(P(C2=C(C3=C(C(C)C)C=C(C(C)C)C=C3C(C)C)C(OC)=CC=C2OC)C4=CC(C(F)(F)F)=CC(C(F)(F)F)=C4)=CC(C(F)(F)F)=C1]\nL10: PPh3 [SMILES P(C1=CC=CC=C1)(C2=CC=CC=C2)C3=CC=CC=C3]\nL11: P(fur)3 [SMILES P(C1=CC=CO1)(C2=CC=CO2)C3=CC=CO3]\nL12: PCy3 HBF4 [SMILES P(C1CCCCC1)(C2CCCCC2)C3CCCCC3]\n\nsolvent:\nS1: N,N-dimethylacetamide [SMILES CC(N(C)C)=O]\nS2: p-xylene [SMILES CC1=CC=C(C)C=C1]\nS3: butyronitrile [SMILES CCCC#N]\nS4: n-butyl acetate [SMILES CCCCOC(C)=O]\n\nconcentration:\nC1: 0.057 M\nC2: 0.1 M\nC3: 0.153 M\n\ntemperature:\nT1: 90 °C\nT2: 105 °C\nT3: 120 °C\n\nExperiments so far (best first):\nB3 | L8 | S3 | C3 | T3 -> 100.0%\nB3 | L8 | S1 | C3 | T3 -> 99.2%\nB3 | L8 | S3 | C3 | T2 -> 96.4%\nB3 | L8 | S2 | C3 | T3 -> 91.2%\nB3 | L8 | S3 | C2 | T3 -> 88.8%\nB3 | L8 | S3 | C2 | T2 -> 82.3%\nB4 | L8 | S3 | C3 | T3 -> 80.9%\nB2 | L8 | S3 | C3 | T3 -> 80.7%\nB3 | L3 | S3 | C3 | T3 -> 77.0%\nB1 | L8 | S3 | C3 | T3 -> 71.8%\nB2 | L8 | S3 | C3 | T2 -> 69.2%\nB3 | L2 | S3 | C3 | T3 -> 69.0%\nB3 | L8 | S3 | C1 | T2 -> 67.8%\nB1 | L8 | S3 | C2 | T2 -> 65.7%\nB3 | L8 | S3 | C3 | T1 -> 63.2%\nB3 | L8 | S4 | C3 | T3 -> 62.3%\nB3 | L8 | S3 | C2 | T1 -> 58.0%\nB1 | L8 | S3 | C3 | T2 -> 53.5%\nB4 | L8 | S3 | C3 | T2 -> 50.8%\nB3 | L8 | S3 | C1 | T3 -> 50.7%\nB2 | L1 | S1 | C2 | T3 -> 28.5%\nB4 | L12 | S1 | C2 | T2 -> 7.3%\nB2 | L7 | S2 | C3 | T2 -> 0.2%\nB3 | L6 | S2 | C1 | T3 -> 0.0%\nB3 | L1 | S3 | C3 | T3 -> 0.0%\n\nPropose exactly 20 NEW experiments not listed above. Return JSON:\n{\"picks\": [{\"base\": \"<label>\", \"ligand\": \"<label>\", \"solvent\": \"<label>\", \"concentration\": \"<label>\", \"temperature\": \"<label>\", \"reason\": \"<one sentence>\"}]}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "response": {
+    "picks": [
+      {
+        "base": "B3",
+        "ligand": "L9",
+        "solvent": "S3",
+        "concentration": "C3",
+        "temperature": "T3",
+        "reason": "Screen JackiePhos under the strongest established base, solvent, concentration, and temperature conditions."
+      },
+      {
+        "base": "B3",
+        "ligand": "L4",
+        "solvent": "S3",
+        "concentration": "C3",
+        "temperature": "T3",
+        "reason": "Test GorlosPhos under the best-performing conditions to assess whether a different bulky dialkylbiaryl phosphine improves the reaction."
+      },
+      {
+        "base": "B3",
+        "ligand": "L5",
+        "solvent": "S3",
+        "concentration": "C3",
+        "temperature": "T3",
+        "reason": "Evaluate tBPh-CPhos under the established optimum because its distinct ligand architecture may offer a useful alternative to L8."
+      },
+      {
+        "base": "B3",
+        "ligand": "L10",
+        "solvent": "S3",
+        "concentration": "C3",
+        "temperature": "T3",
+        "reason": "Screen PPh3 at the optimum conditions to determine whether it performs better than its previously untested benchmark status suggests."
+      },
+      {
+        "base": "B3",
+        "ligand": "L11",
+        "solvent": "S3",
+        "concentration": "C3",
+        "temperature": "T3",
+        "reason": "Test the electron-rich furyl phosphine under the best conditions to isolate its ligand effect."
+      },
+      {
+        "base": "B3",
+        "ligand": "L12",
+        "solvent": "S3",
+        "concentration": "C3",
+        "temperature": "T3",
+        "reason": "Reassess PCy3 under the optimum conditions because its prior low yield was measured in a different solvent and at lower temperature."
+      },
+      {
+        "base": "B3",
+        "ligand": "L7",
+        "solvent": "S3",
+        "concentration": "C3",
+        "temperature": "T3",
+        "reason": "Test PPh2Me under the optimum conditions to separate its ligand performance from the previously poor result in another solvent."
+      },
+      {
+        "base": "B3",
+        "ligand": "L6",
+        "solvent": "S3",
+        "concentration": "C3",
+        "temperature": "T3",
+        "reason": "Evaluate PPhMe2 under the optimum conditions despite its earlier failure with a less favorable solvent and concentration."
+      },
+      {
+        "base": "B3",
+        "ligand": "L8",
+        "solvent": "S1",
+        "concentration": "C3",
+        "temperature": "T2",
+        "reason": "Measure whether the near-optimal DMA solvent retains high yield at 105 °C."
+      },
+      {
+        "base": "B3",
+        "ligand": "L8",
+        "solvent": "S1",
+        "concentration": "C3",
+        "temperature": "T1",
+        "reason": "Test the low-temperature response in DMA to determine whether this solvent enables efficient reaction at 90 °C."
+      },
+      {
+        "base": "B3",
+        "ligand": "L8",
+        "solvent": "S1",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "Check whether the high yield in DMA persists at the intermediate concentration."
+      },
+      {
+        "base": "B3",
+        "ligand": "L8",
+        "solvent": "S1",
+        "concentration": "C2",
+        "temperature": "T2",
+        "reason": "Probe the concentration-temperature interaction in DMA at intermediate concentration and temperature."
+      },
+      {
+        "base": "B3",
+        "ligand": "L8",
+        "solvent": "S1",
+        "concentration": "C1",
+        "temperature": "T3",
+        "reason": "Determine whether DMA mitigates the concentration penalty observed at low concentration in butyronitrile."
+      },
+      {
+        "base": "B3",
+        "ligand": "L8",
+        "solvent": "S2",
+        "concentration": "C3",
+        "temperature": "T2",
+        "reason": "Assess whether p-xylene’s lower yield at 120 °C improves at the intermediate temperature."
+      },
+      {
+        "base": "B3",
+        "ligand": "L8",
+        "solvent": "S2",
+        "concentration": "C3",
+        "temperature": "T1",
+        "reason": "Measure the low-temperature performance of p-xylene to clarify its solvent-temperature response."
+      },
+      {
+        "base": "B3",
+        "ligand": "L8",
+        "solvent": "S2",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "Test p-xylene at intermediate concentration to assess whether its yield penalty depends on reaction concentration."
+      },
+      {
+        "base": "B3",
+        "ligand": "L8",
+        "solvent": "S4",
+        "concentration": "C3",
+        "temperature": "T2",
+        "reason": "Check whether n-butyl acetate’s yield improves at 105 °C relative to the tested 120 °C condition."
+      },
+      {
+        "base": "B3",
+        "ligand": "L8",
+        "solvent": "S4",
+        "concentration": "C3",
+        "temperature": "T1",
+        "reason": "Map the low-temperature response in n-butyl acetate, which has only been tested at 120 °C."
+      },
+      {
+        "base": "B3",
+        "ligand": "L8",
+        "solvent": "S4",
+        "concentration": "C2",
+        "temperature": "T3",
+        "reason": "Determine whether reducing concentration changes the comparatively poor n-butyl acetate result."
+      },
+      {
+        "base": "B2",
+        "ligand": "L8",
+        "solvent": "S3",
+        "concentration": "C3",
+        "temperature": "T1",
+        "reason": "Complete the potassium pivalate temperature comparison under the otherwise optimal conditions."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 1510,
+    "completion_tokens": 2312,
+    "total_tokens": 3822,
+    "cached_tokens": 0
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an expert synthetic chemist planning experiments to maximise reaction yield.\nEach experiment chooses one option for every variable listed. You will see the results\nof experiments already run. Choose the next batch to find the highest-yield conditions\nin as few experiments as possible. Use chemical knowledge (ligand and base effects,\nsubstrate reactivity, solvent effects) and the observed results. Balance exploiting\ngood regions with testing informative new combinations. Never repeat an experiment.\nReturn JSON only."
+      },
+      {
+        "role": "user",
+        "content": "Pd-catalysed Buchwald-Hartwig amination of 2-iodopyridine with 4-methylaniline; choose the ligand, base and isoxazole additive.\n\nVariables and options:\nligand:\nL1: tBuBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C(OC)=CC=C2OC]\nL2: tBuXPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C=CC=C2]\nL3: XPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C3CCCCC3)C4CCCCC4)C=CC=C2]\nL4: AdBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P([C@@]3(C[C@@H]4C5)C[C@H](C4)C[C@H]5C3)[C@]6(C7)C[C@@H](C[C@@H]7C8)C[C@@H]8C6)C(OC)=CC=C2OC]\n\nbase:\nB1: BTMG [SMILES CC(C)(C)/N=C(N(C)C)/N(C)C]\nB2: P2Et [SMILES CN(C)P(N(C)C)(N(C)C)=NP(N(C)C)(N(C)C)=NCC]\nB3: MTBD [SMILES CN1CCCN2C1=NCCC2]\n\nadditive:\nA1: 5-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CC=NO1]\nA2: 4-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CON=C1]\nA3: 3-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=NOC=C1]\nA4: 5-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=CC=NO1]\nA5: 3-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=NOC=C1]\nA6: 1,2-benzisoxazole [SMILES C12=C(C=CC=C2)ON=C1]\nA7: 2,1-benzisoxazole [SMILES C12=CON=C1C=CC=C2]\nA8: ethyl 5-methylisoxazole-4-carboxylate [SMILES CC1=C(C(OCC)=O)C=NO1]\nA9: ethyl 5-methylisoxazole-3-carboxylate [SMILES CC1=CC(C(OCC)=O)=NO1]\nA10: 3,5-dimethylisoxazole [SMILES CC1=CC(C)=NO1]\nA11: 5-methyl-3-(pyrrol-1-yl)isoxazole [SMILES CC1=CC(N2C=CC=C2)=NO1]\nA12: 5-methylisoxazole [SMILES CC1=CC=NO1]\nA13: ethyl 3-methylisoxazole-5-carboxylate [SMILES CC1=NOC(C(OCC)=O)=C1]\nA14: 3-methyl-5-phenylisoxazole [SMILES CC1=NOC(C2=CC=CC=C2)=C1]\nA15: 3-methylisoxazole [SMILES CC1=NOC=C1]\nA16: ethyl isoxazole-4-carboxylate [SMILES CCOC(C1=CON=C1)=O]\nA17: ethyl isoxazole-3-carboxylate [SMILES CCOC(C1=NOC=C1)=O]\nA18: ethyl 3-methoxyisoxazole-5-carboxylate [SMILES COC1=NOC(C(OCC)=O)=C1]\nA19: 5-(2,6-difluorophenyl)isoxazole [SMILES FC(C=CC=C1F)=C1C2=CC=NO2]\nA20: methyl isoxazole-5-carboxylate [SMILES O=C(OC)C1=CC=NO1]\nA21: methyl 5-(furan-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CO2)=C1]\nA22: methyl 5-(thiophen-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CS2)=C1]\n\nExperiments so far (best first):\nL1 | B3 | A15 -> 98.8%\nL1 | B2 | A15 -> 92.9%\nL2 | B3 | A15 -> 91.5%\nL1 | B1 | A15 -> 90.4%\nL2 | B1 | A15 -> 90.2%\nL1 | B1 | A13 -> 84.2%\nL2 | B3 | A4 -> 84.1%\nL2 | B2 | A21 -> 75.7%\nL1 | B1 | A18 -> 69.5%\nL4 | B1 | A9 -> 68.6%\nL1 | B1 | A10 -> 65.6%\nL1 | B1 | A12 -> 65.2%\nL1 | B1 | A14 -> 63.4%\nL1 | B1 | A17 -> 63.2%\nL4 | B2 | A1 -> 24.2%\n\nPropose exactly 20 NEW experiments not listed above. Return JSON:\n{\"picks\": [{\"ligand\": \"<label>\", \"base\": \"<label>\", \"additive\": \"<label>\", \"reason\": \"<one sentence>\"}]}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "response": {
+    "picks": [
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A13",
+        "reason": "A13 gave 84.2% with L1 and B1, so pairing it with the strongest observed base tests whether its promising yield can improve."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A4",
+        "reason": "A4 gave 84.1% with L2 and B3, and the stronger L1/B3 combination may further improve its performance."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A10",
+        "reason": "A10 gave only 65.6% with L1 and B1, so testing it with the best-performing base checks whether that limitation was base-dependent."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A12",
+        "reason": "A12 performed modestly with L1 and B1, and the B3 pairing tests whether the top base rescues this simple methylisoxazole additive."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A14",
+        "reason": "A14 is structurally related to the top additive A15, and B3 may improve on its 63.4% result with B1."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A17",
+        "reason": "A17 gave 63.2% with L1 and B1, making the best-base pairing a useful test of its base sensitivity."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A18",
+        "reason": "A18 gave 69.5% with L1 and B1, and B3 may raise the yield of this ester-substituted isoxazole."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A1",
+        "reason": "A1 was poor with L4 and B2, so testing it with the best ligand and base distinguishes additive effects from condition effects."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A2",
+        "reason": "A2 provides a positional phenylisoxazole comparison under the highest-performing ligand/base pair."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A3",
+        "reason": "A3 tests a different phenylisoxazole substitution pattern under the best observed ligand/base conditions."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A8",
+        "reason": "A8 expands the screen to a methyl- and ester-substituted isoxazole under the strongest known conditions."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A9",
+        "reason": "A9 is a positional ester isomer of related additives and is worth evaluating with the best ligand/base pair."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A16",
+        "reason": "A16 tests an unsubstituted ester-bearing isoxazole under the best observed ligand/base conditions."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A20",
+        "reason": "A20 tests a compact isoxazole ester additive with the strongest known ligand/base combination."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A5",
+        "reason": "A5 is a close structural comparator to A4, which performed well with B3, and can reveal the effect of its substitution pattern."
+      },
+      {
+        "ligand": "L2",
+        "base": "B2",
+        "additive": "A15",
+        "reason": "A15 performed strongly across the tested L1 and L2 conditions, and this fills the remaining base comparison for L2."
+      },
+      {
+        "ligand": "L3",
+        "base": "B1",
+        "additive": "A15",
+        "reason": "Testing the top additive with XPhos and B1 checks whether another ligand can approach the leading L1/B3 result."
+      },
+      {
+        "ligand": "L3",
+        "base": "B2",
+        "additive": "A15",
+        "reason": "This tests whether XPhos benefits from P2Et while retaining the consistently high-performing A15 additive."
+      },
+      {
+        "ligand": "L3",
+        "base": "B3",
+        "additive": "A15",
+        "reason": "This evaluates XPhos under the best observed base with the top-performing additive."
+      },
+      {
+        "ligand": "L4",
+        "base": "B3",
+        "additive": "A15",
+        "reason": "AdBrettPhos performed poorly in a different condition, and pairing it with B3 and A15 tests whether those factors improve its outcome."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 1502,
+    "completion_tokens": 2310,
+    "total_tokens": 3812,
+    "cached_tokens": 0
+  }
+}

@@ -27,7 +27,7 @@ The arms are random search; Gaussian-process expected improvement (`gp_ei`); Tab
 
 ## Result
 
-Numbers will be filled from results/summary.json after the final runs. Do not treat any fixture as the finding.
+At the budget, mean normalised best-so-far (`metrics.overall` in `results/summary.json`) is 0.9049131137755609 for hybrid, 0.8872951257469133 for llm, 0.871984199600428 for gp_ei, 0.8102740745742515 for random, and 1.0 for oracle. Found-hit rate at that budget is 0.3888888888888889 for hybrid, llm, and llm_anon, 0.4444444444444444 for llm_zeroshot, 0.3442622950819672 for gp_ei, 0.3064516129032258 for random, and 1.0 for oracle.
 
 **Figure 1 slot.** Insert `results/figures/figure1_norm_best.png` here only after `results/summary.json` has `"fixture": false`. The chart is mean normalised best-so-far against the number of experiments, with a 95% bootstrap band and a dashed line at n = 10.
 

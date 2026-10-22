@@ -1,0 +1,154 @@
+{
+  "request": {
+    "model": "gpt-6-luna",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are an expert synthetic chemist planning experiments to maximise reaction yield.\nEach experiment chooses one option for every variable listed. You will see the results\nof experiments already run. Choose the next batch to find the highest-yield conditions\nin as few experiments as possible. Use chemical knowledge (ligand and base effects,\nsubstrate reactivity, solvent effects) and the observed results. Balance exploiting\ngood regions with testing informative new combinations. Never repeat an experiment.\nReturn JSON only."
+      },
+      {
+        "role": "user",
+        "content": "Pd-catalysed Buchwald-Hartwig amination of 2-iodopyridine with 4-methylaniline; choose the ligand, base and isoxazole additive.\n\nVariables and options:\nligand:\nL1: tBuBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C(OC)=CC=C2OC]\nL2: tBuXPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C(C)(C)C)C(C)(C)C)C=CC=C2]\nL3: XPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P(C3CCCCC3)C4CCCCC4)C=CC=C2]\nL4: AdBrettPhos [SMILES CC(C)C(C=C(C(C)C)C=C1C(C)C)=C1C2=C(P([C@@]3(C[C@@H]4C5)C[C@H](C4)C[C@H]5C3)[C@]6(C7)C[C@@H](C[C@@H]7C8)C[C@@H]8C6)C(OC)=CC=C2OC]\n\nbase:\nB1: BTMG [SMILES CC(C)(C)/N=C(N(C)C)/N(C)C]\nB2: P2Et [SMILES CN(C)P(N(C)C)(N(C)C)=NP(N(C)C)(N(C)C)=NCC]\nB3: MTBD [SMILES CN1CCCN2C1=NCCC2]\n\nadditive:\nA1: 5-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CC=NO1]\nA2: 4-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=CON=C1]\nA3: 3-phenylisoxazole [SMILES C1(C2=CC=CC=C2)=NOC=C1]\nA4: 5-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=CC=NO1]\nA5: 3-(dibenzylamino)isoxazole [SMILES C1(N(CC2=CC=CC=C2)CC3=CC=CC=C3)=NOC=C1]\nA6: 1,2-benzisoxazole [SMILES C12=C(C=CC=C2)ON=C1]\nA7: 2,1-benzisoxazole [SMILES C12=CON=C1C=CC=C2]\nA8: ethyl 5-methylisoxazole-4-carboxylate [SMILES CC1=C(C(OCC)=O)C=NO1]\nA9: ethyl 5-methylisoxazole-3-carboxylate [SMILES CC1=CC(C(OCC)=O)=NO1]\nA10: 3,5-dimethylisoxazole [SMILES CC1=CC(C)=NO1]\nA11: 5-methyl-3-(pyrrol-1-yl)isoxazole [SMILES CC1=CC(N2C=CC=C2)=NO1]\nA12: 5-methylisoxazole [SMILES CC1=CC=NO1]\nA13: ethyl 3-methylisoxazole-5-carboxylate [SMILES CC1=NOC(C(OCC)=O)=C1]\nA14: 3-methyl-5-phenylisoxazole [SMILES CC1=NOC(C2=CC=CC=C2)=C1]\nA15: 3-methylisoxazole [SMILES CC1=NOC=C1]\nA16: ethyl isoxazole-4-carboxylate [SMILES CCOC(C1=CON=C1)=O]\nA17: ethyl isoxazole-3-carboxylate [SMILES CCOC(C1=NOC=C1)=O]\nA18: ethyl 3-methoxyisoxazole-5-carboxylate [SMILES COC1=NOC(C(OCC)=O)=C1]\nA19: 5-(2,6-difluorophenyl)isoxazole [SMILES FC(C=CC=C1F)=C1C2=CC=NO2]\nA20: methyl isoxazole-5-carboxylate [SMILES O=C(OC)C1=CC=NO1]\nA21: methyl 5-(furan-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CO2)=C1]\nA22: methyl 5-(thiophen-2-yl)isoxazole-3-carboxylate [SMILES O=C(OC)C1=NOC(C2=CC=CS2)=C1]\n\nExperiments so far (best first):\nL1 | B1 | A15 -> 90.4%\nL1 | B1 | A13 -> 84.2%\nL2 | B3 | A4 -> 84.1%\nL2 | B2 | A21 -> 75.7%\nL4 | B1 | A9 -> 68.6%\nL1 | B1 | A10 -> 65.6%\nL1 | B1 | A12 -> 65.2%\nL1 | B1 | A14 -> 63.4%\nL1 | B1 | A17 -> 63.2%\nL4 | B2 | A1 -> 24.2%\n\nPropose exactly 20 NEW experiments not listed above. Return JSON:\n{\"picks\": [{\"ligand\": \"<label>\", \"base\": \"<label>\", \"additive\": \"<label>\", \"reason\": \"<one sentence>\"}]}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "response": {
+    "picks": [
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A18",
+        "reason": "This 3-methoxy-5-carboxylate is a close analogue of A13, which gave the second-highest yield under L1/B1."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A9",
+        "reason": "Testing A9 with the leading L1/B1 catalyst pair will show whether its moderate result with L4/B1 was limited by the ligand."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A11",
+        "reason": "Its 3-pyrrolyl substitution probes whether an electron-rich heteroaryl group can reproduce the strong performance of 3-methylisoxazole A15."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A5",
+        "reason": "This 3-dibenzylamino isoxazole tests a bulky donor substituent related to A4, which performed well with L2/B3."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A4",
+        "reason": "Testing A4 with the leading catalyst pair will clarify whether its 84.1% result depends on the L2/B3 combination."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A8",
+        "reason": "This methylated ester is a positional isomer of the successful ester-bearing A13 and tests whether the substitution pattern matters."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A16",
+        "reason": "This isoxazole-4-carboxylate tests whether an ester alone can improve on the strong methyl-substituted additive A13."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A17",
+        "reason": "A17 gave only 63.2% with L1/B1, and comparing its positional isomer A16 helps assess the ester position effect."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A20",
+        "reason": "This compact 5-carboxylate provides a useful comparison with the ethyl ester additives and the higher-yielding A13."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A21",
+        "reason": "A21 was moderately successful with L2/B2, so testing it under the leading L1/B1 conditions checks whether its yield can be improved."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A22",
+        "reason": "This thiophene analogue of A21 tests whether changing the heteroaryl substituent improves additive performance."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A3",
+        "reason": "The 3-phenyl substituent tests a bulkier analogue of A15, whose 3-methylisoxazole structure gave the best observed yield."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A1",
+        "reason": "This 5-phenylisoxazole tests whether phenyl substitution is beneficial at a different ring position than in A14."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A2",
+        "reason": "This 4-phenyl regioisomer broadens the positional comparison of phenylisoxazole additives under the best conditions."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A6",
+        "reason": "This fused benzisoxazole tests whether a rigid bicyclic additive can outperform the smaller isoxazoles."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A7",
+        "reason": "This benzisoxazole regioisomer tests whether the orientation of the fused heterocycle affects the additive response."
+      },
+      {
+        "ligand": "L1",
+        "base": "B1",
+        "additive": "A19",
+        "reason": "The difluorophenyl substituent tests an electron-poor analogue of the phenyl-containing additives under the leading catalyst conditions."
+      },
+      {
+        "ligand": "L1",
+        "base": "B2",
+        "additive": "A15",
+        "reason": "This tests whether the top-performing A15/L1 combination retains its advantage when BTMG is replaced by P2Et."
+      },
+      {
+        "ligand": "L1",
+        "base": "B3",
+        "additive": "A15",
+        "reason": "This compares MTBD with the successful BTMG base while keeping the leading ligand and additive fixed."
+      },
+      {
+        "ligand": "L2",
+        "base": "B1",
+        "additive": "A15",
+        "reason": "This isolates the ligand effect by pairing the top additive and base with tBuXPhos instead of tBuBrettPhos."
+      },
+      {
+        "ligand": "L2",
+        "base": "B3",
+        "additive": "A15",
+        "reason": "A15 is tested with the L2/B3 pair that gave 84.1% with A4, checking whether the best additive transfers to that promising catalyst system."
+      }
+    ]
+  },
+  "usage": {
+    "prompt_tokens": 1432,
+    "completion_tokens": 3048,
+    "total_tokens": 4480,
+    "cached_tokens": 0
+  }
+}
